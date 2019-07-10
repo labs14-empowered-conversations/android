@@ -55,5 +55,15 @@ class MainActivity : AppCompatActivity() {
 
         result.setSelection(1, false)
 
+        val users = ArrayList<User>()
+        for (i in 0 until 500){
+            users.add(User("$i"))
+        }
+
+        users_list.apply {
+            layoutManager = LinearLayoutManager(applicationContext)
+            adapter = UsersListAdapter(users)
+        }
+
     }
 }
