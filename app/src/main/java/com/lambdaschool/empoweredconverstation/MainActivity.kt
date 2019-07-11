@@ -1,9 +1,10 @@
-package com.joshuahalvorson.empoweredconverstation
+package com.lambdaschool.empoweredconverstation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.lambdaschool.empoweredconverstation.R
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
