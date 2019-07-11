@@ -3,22 +3,24 @@ package com.lambdaschool.empoweredconversation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.EditText
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.content_converstation_form.*
 
-class MainActivity : AppCompatActivity() {
+class ConversationForm : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_conversation_form)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Home"
+        supportActionBar?.title = "Start a Conversation"
 
         val item1 = PrimaryDrawerItem().withIdentifier(1).withName("Home")
         val item2 = PrimaryDrawerItem().withIdentifier(2).withName("Start a conversation")
@@ -33,7 +35,6 @@ class MainActivity : AppCompatActivity() {
             .withProfileImagesClickable(false)
             .withSelectionListEnabledForSingleProfile(false)
             .build()
-
 
         val result = DrawerBuilder()
             .withAccountHeader(header)
@@ -59,17 +60,13 @@ class MainActivity : AppCompatActivity() {
             }
             .build()
 
-        result.setSelection(1, false)
+        result.setSelection(2, false)
 
-        val users = ArrayList<User>()
-        for (i in 0 until 500){
-            users.add(User("$i"))
+        continue_button.setOnClickListener {
+            YoYo.with(Techniques.Shake)
+                .duration(200)
+                .repeat(0)
+                .playOn(users_name_edit_text)
         }
-
-        users_list.apply {
-            layoutManager = LinearLayoutManager(applicationContext)
-            adapter = UsersListAdapter(users)
-        }
-
     }
 }
