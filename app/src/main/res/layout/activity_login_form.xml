@@ -54,7 +54,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         app:cardCornerRadius="6dp"
-                        android:elevation="5dp">
+                        android:elevation="5dp"
+                        android:layout_margin="10dp">
 
                     <Button
                             android:id="@+id/button_login"
@@ -62,9 +63,7 @@
                             android:layout_height="wrap_content"
                             android:text="Login"
                             android:textColor="@color/md_white_1000"
-                            android:background="@drawable/continue_button_gradient"
-                            android:layout_margin="10dp"
-                    />
+                            android:background="@drawable/continue_button_gradient"/>
 
                 </androidx.cardview.widget.CardView>
 
