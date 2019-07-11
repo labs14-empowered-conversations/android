@@ -1,9 +1,10 @@
-package com.joshuahalvorson.empoweredconverstation
+package com.lambdaschool.empoweredconverstation
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.lambdaschool.empoweredconverstation.R
 import kotlinx.android.synthetic.main.users_list_item_layout.view.*
 
 class UsersListAdapter(val users: ArrayList<User>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -16,7 +17,13 @@ class UsersListAdapter(val users: ArrayList<User>): RecyclerView.Adapter<Recycle
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.users_list_item_layout, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.users_list_item_layout,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int = users.size
