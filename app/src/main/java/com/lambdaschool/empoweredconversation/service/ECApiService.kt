@@ -3,6 +3,7 @@ package com.lambdaschool.empoweredconversation.service
 import com.lambdaschool.empoweredconversation.Token
 import com.lambdaschool.empoweredconversation.User
 import io.reactivex.Single
+import retrofit2.Call
 import retrofit2.http.*
 
 interface ECApiService {
@@ -20,5 +21,5 @@ interface ECApiService {
     @POST("/createnewuser")
     fun createUser(
         @Body user: User
-    )
+    ): Call<Unit?>
 }
