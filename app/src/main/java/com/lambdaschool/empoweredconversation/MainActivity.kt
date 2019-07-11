@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         val users = ArrayList<User>()
         for (i in 0 until 500){
-            users.add(User("$i"))
+            users.add(User("$i", "$i"))
         }
 
         users_list.apply {

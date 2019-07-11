@@ -11,7 +11,7 @@ class UsersListAdapter(val users: ArrayList<User>): RecyclerView.Adapter<Recycle
         private val userName = view.user_name
 
         fun bindModel(user: User){
-            userName.text = user.name
+            userName.text = user.username
         }
     }
 
