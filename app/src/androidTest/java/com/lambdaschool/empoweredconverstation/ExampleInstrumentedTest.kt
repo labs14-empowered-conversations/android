@@ -1,4 +1,4 @@
-package com.joshuahalvorson.empoweredconverstation
+package com.lambdaschool.empoweredconverstation
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
