@@ -1,10 +1,9 @@
-package com.lambdaschool.empoweredconverstation
+package com.lambdaschool.empoweredconversation
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.lambdaschool.empoweredconverstation.R
 import kotlinx.android.synthetic.main.users_list_item_layout.view.*
 
 class UsersListAdapter(val users: ArrayList<User>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {

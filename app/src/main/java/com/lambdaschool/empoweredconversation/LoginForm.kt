@@ -1,11 +1,10 @@
-package com.lambdaschool.empoweredconverstation
+package com.lambdaschool.empoweredconversation
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lambdaschool.empoweredconverstation.R
 import kotlinx.android.synthetic.main.activity_login_form.*
 
 class LoginForm : AppCompatActivity() {

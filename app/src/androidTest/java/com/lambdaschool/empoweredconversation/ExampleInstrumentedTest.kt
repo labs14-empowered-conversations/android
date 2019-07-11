@@ -1,4 +1,4 @@
-package com.lambdaschool.empoweredconverstation
+package com.lambdaschool.empoweredconversation
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
