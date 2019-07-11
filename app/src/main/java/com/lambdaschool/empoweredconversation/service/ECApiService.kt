@@ -1,6 +1,7 @@
 package com.lambdaschool.empoweredconversation.service
 
 import com.lambdaschool.empoweredconversation.Token
+import com.lambdaschool.empoweredconversation.User
 import io.reactivex.Single
 import retrofit2.http.*
 
@@ -16,4 +17,8 @@ interface ECApiService {
         @Header("Authorization") header: String
     ): Single<Token>
 
+    @POST("/createnewuser")
+    fun createUser(
+        @Body user: User
+    )
 }
