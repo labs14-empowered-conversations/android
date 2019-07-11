@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "Home"
 
         val item1 = PrimaryDrawerItem().withIdentifier(1).withName("Home")
+        val item2 = PrimaryDrawerItem().withIdentifier(2).withName("Start a conversation")
 
         val header = AccountHeaderBuilder()
             .withActivity(this)
@@ -40,12 +41,17 @@ class MainActivity : AppCompatActivity() {
             .withToolbar(toolbar)
             .addDrawerItems(
                 item1,
-                DividerDrawerItem()
+                DividerDrawerItem(),
+                item2
             )
             .withSelectedItem(-1)
             .withOnDrawerItemClickListener { view, position, drawerItem ->
                 if (drawerItem.identifier == 1L) {
                     val intent = Intent(applicationContext, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                } else if (drawerItem.identifier == 2L) {
+                    val intent = Intent(applicationContext, ConversationForm::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
