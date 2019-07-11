@@ -1,3 +1,5 @@
 package com.lambdaschool.empoweredconversation
 
-data class User (val name: String)
+data class User(
+    val username: String,
+    val password: String)
