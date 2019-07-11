@@ -54,6 +54,7 @@ dependencies {
     // Retrofit for making network calls
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
 
     // Landing screen for first time users
     implementation 'agency.tango.android:material-intro-screen:0.0.5'
@@ -66,4 +67,8 @@ dependencies {
     implementationDependenciesMetadata 'com.google.dagger:dagger-android-support:2.15'
     // if you use the support libraries
     kapt 'com.google.dagger:dagger-android-processor:2.15'
+
+    //MVVM
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.0.0"
 }
