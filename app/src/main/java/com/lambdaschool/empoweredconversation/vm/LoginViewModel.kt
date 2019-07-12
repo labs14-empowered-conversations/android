@@ -20,4 +20,5 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
     fun createUser(user: User): LiveData<Boolean> {
         return userRepo.createUser(user)
     }
+
 }
