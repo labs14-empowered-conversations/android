@@ -13,7 +13,7 @@ android:
     - platform-tools
     - build-tools-3.4.2
     - android-25
-    - sys-img-arm64-v8a-28
+    - sys-img-armeabi-v7a-25
 
 before_install:
   - yes | sdkmanager "platforms;android-27"
@@ -22,7 +22,7 @@ before_install:
 
 before_script:
   # Create and start emulator
-  - echo no | android create avd --force -n test -t android-25 --abi arm64-v8a
+  - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - adb wait-for-device
   - adb shell input keyevent 82 &
