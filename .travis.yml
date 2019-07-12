@@ -15,8 +15,6 @@
       - build-tools-$ANDROID_BUILD_TOOLS
       - android-$ANDROID_API
       - extra-android-support
-      - extra-android-m2repository
-      - extra-google-m2repository
       - sys-img-armeabi-v7a-android-$EMULATOR_API
     licenses:
       - ".+"
@@ -33,7 +31,6 @@
     - chmod +x gradlew
     - ./gradlew --version
     - ./gradlew clean
-    - touch local.properties
   cache:
     directories:
       - $HOME/.m2
@@ -42,5 +39,4 @@
       - $HOME/.android/build-cache
   before_install:
     - yes | sdkmanager "platforms;android-$ANDROID_API"
-  after_success:
-    - ./gradlew sonarqube -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_TOKEN -Dsonar.verbose=true
+    - touch local.properties
