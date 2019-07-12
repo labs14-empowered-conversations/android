@@ -17,7 +17,6 @@ class LoginForm : AppCompatActivity() {
     private val TAG = "prefs"
     private lateinit var loginViewModel: LoginViewModel
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_form)
