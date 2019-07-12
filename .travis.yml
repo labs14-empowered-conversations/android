@@ -84,8 +84,8 @@ before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 
 before_install:
-  -chmod +x ./gradlew
-  -touch local.properties
+  - chmod +x ./gradlew
+  - touch local.properties
 
 cache:
   directories:
