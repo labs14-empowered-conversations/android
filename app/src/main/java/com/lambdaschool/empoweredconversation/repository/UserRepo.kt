@@ -1,22 +1,20 @@
 package com.lambdaschool.empoweredconversation.repository
 
-import android.content.SharedPreferences
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import com.lambdaschool.empoweredconversation.Token
 import com.lambdaschool.empoweredconversation.User
-import com.lambdaschool.empoweredconversation.utils.AuthUtils
 import com.lambdaschool.empoweredconversation.service.RetrofitInstance
+import com.lambdaschool.empoweredconversation.utils.AuthUtils
 import io.reactivex.Observable
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.functions.Consumer
+import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import org.reactivestreams.Subscriber
-import org.reactivestreams.Subscription
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +24,7 @@ class UserRepo() {
     val tokenLiveData = MutableLiveData<Token>()
     val userLiveData = MutableLiveData<MutableList<User>>()
     val registeredBoolean = MutableLiveData<Boolean>()
+    val userList = mutableListOf<User>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getToken(username: String, password: String): MutableLiveData<Token> {
@@ -50,7 +49,7 @@ class UserRepo() {
     fun createUser(user: User): MutableLiveData<Boolean> {
         val ecApiService = RetrofitInstance.getService()
         val call = ecApiService?.createUser(user)
-        call?.enqueue(object: Callback<Unit?>{
+        call?.enqueue(object : Callback<Unit?> {
             override fun onFailure(call: Call<Unit?>, t: Throwable) {
                 Log.i("ECApiServiceCreateUser", t.localizedMessage)
             }
@@ -68,22 +67,27 @@ class UserRepo() {
         val result = ecApiService?.getAllUsers(token)
             ?.subscribeOn(Schedulers.io())
             ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribeWith(object: Subscriber<MutableList<User>> {
+            ?.flatMap {
+                Log.i("getUsers", "${it.size}")
+                Observable.fromIterable(it)
+            }
+            ?.subscribeWith(object : Observer<User> {
+                override fun onSubscribe(d: Disposable) {
+
+                }
+
+                override fun onNext(t: User) {
+                    t.let { userList.add(it) }
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.i("getUsers", e.localizedMessage)
+                }
+
                 override fun onComplete() {
-
+                    userLiveData.postValue(userList)
                 }
 
-                override fun onSubscribe(s: Subscription?) {
-
-                }
-
-                override fun onNext(t: MutableList<User>?) {
-                    userLiveData.postValue(t)
-                }
-
-                override fun onError(t: Throwable?) {
-                    val i = 0
-                }
             })
         return userLiveData
     }
