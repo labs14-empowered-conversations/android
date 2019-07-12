@@ -1,3 +1,16 @@
 language: android
 sudo: required
 jdk: oraclejdk8
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-3.4.2
+    - android-21
+    - android-28
+    - extra-google-m2repository
+
+
+before_install:
+  - chmod +x gradlew
