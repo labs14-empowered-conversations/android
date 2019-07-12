@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.users_list_item_layout.view.*
 
-class UsersListAdapter(val users: ArrayList<User>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class UsersListAdapter(val users: MutableList<User>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     open class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         private val userName = view.user_name
 
