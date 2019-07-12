@@ -16,8 +16,8 @@ android {
         applicationId "com.lambdaschool.empoweredconversation"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 2
-        versionName "2.0"
+        versionCode 3
+        versionName "2.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "authCredential", localProperties['authCredential']
     }
