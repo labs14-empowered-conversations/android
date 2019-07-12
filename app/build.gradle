@@ -19,8 +19,7 @@ android {
         versionCode 2
         versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "clientId", localProperties['clientId']
-        buildConfigField "String", "clientSecret", localProperties['clientSecret']
+        buildConfigField "String", "authCredential", localProperties['authCredential']
     }
 
     buildTypes {

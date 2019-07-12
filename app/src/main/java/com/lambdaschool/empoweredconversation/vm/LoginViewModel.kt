@@ -12,7 +12,6 @@ import com.lambdaschool.empoweredconversation.repository.UserRepo
 class LoginViewModel(application: Application): AndroidViewModel(application) {
     private val userRepo = UserRepo()
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun getToken(username: String, password: String): LiveData<Token> {
         return userRepo.getToken(username, password)
     }

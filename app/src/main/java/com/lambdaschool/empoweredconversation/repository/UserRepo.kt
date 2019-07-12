@@ -4,10 +4,10 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
+import com.lambdaschool.empoweredconversation.BuildConfig
 import com.lambdaschool.empoweredconversation.Token
 import com.lambdaschool.empoweredconversation.User
 import com.lambdaschool.empoweredconversation.service.RetrofitInstance
-import com.lambdaschool.empoweredconversation.utils.AuthUtils
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -26,11 +26,10 @@ class UserRepo() {
     val registeredBoolean = MutableLiveData<Boolean>()
     val userList = mutableListOf<User>()
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun getToken(username: String, password: String): MutableLiveData<Token> {
         val ecApiService = RetrofitInstance.getService()
         val result = ecApiService?.getToken(
-            "password", username, password, AuthUtils.getBase64ApiCredentials()
+            "password", username, password, BuildConfig.authCredential
         )
             ?.subscribeOn(Schedulers.io())
             ?.observeOn(AndroidSchedulers.mainThread())
