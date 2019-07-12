@@ -2,6 +2,7 @@ package com.lambdaschool.empoweredconversation.service
 
 import com.lambdaschool.empoweredconversation.Token
 import com.lambdaschool.empoweredconversation.User
+import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.*
@@ -15,11 +16,13 @@ interface ECApiService {
         @Field("grant_type") type: String,
         @Field("username") username: String,
         @Field("password") password: String,
-        @Header("Authorization") header: String
-    ): Single<Token>
+        @Header("Authorization") header: String): Single<Token>
 
     @POST("/createnewuser")
     fun createUser(
-        @Body user: User
-    ): Call<Unit?>
+        @Body user: User): Call<Unit?>
+
+    @GET("/users/users")
+    fun getAllUsers(
+        @Header("Authorization") token: String): Flowable<MutableList<User>>
 }

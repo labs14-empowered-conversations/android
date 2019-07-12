@@ -9,10 +9,14 @@ import com.lambdaschool.empoweredconversation.Token
 import com.lambdaschool.empoweredconversation.User
 import com.lambdaschool.empoweredconversation.utils.AuthUtils
 import com.lambdaschool.empoweredconversation.service.RetrofitInstance
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.functions.Consumer
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import org.reactivestreams.Subscriber
+import org.reactivestreams.Subscription
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,12 +24,13 @@ import retrofit2.Response
 class UserRepo() {
     private val compositeDisposable = CompositeDisposable()
     val tokenLiveData = MutableLiveData<Token>()
+    val userLiveData = MutableLiveData<MutableList<User>>()
     val registeredBoolean = MutableLiveData<Boolean>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getToken(username: String, password: String): MutableLiveData<Token> {
         val ecApiService = RetrofitInstance.getService()
-        val tokenSingle = ecApiService?.getToken(
+        val result = ecApiService?.getToken(
             "password", username, password, AuthUtils.getBase64ApiCredentials()
         )
             ?.subscribeOn(Schedulers.io())
@@ -36,7 +41,7 @@ class UserRepo() {
                 }
 
                 override fun onError(e: Throwable) {
-                    val i = 0
+
                 }
             })
         return tokenLiveData
@@ -56,5 +61,30 @@ class UserRepo() {
             }
         })
         return registeredBoolean
+    }
+
+    fun getAllUsers(token: String): MutableLiveData<MutableList<User>> {
+        val ecApiService = RetrofitInstance.getService()
+        val result = ecApiService?.getAllUsers(token)
+            ?.subscribeOn(Schedulers.io())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribeWith(object: Subscriber<MutableList<User>> {
+                override fun onComplete() {
+
+                }
+
+                override fun onSubscribe(s: Subscription?) {
+
+                }
+
+                override fun onNext(t: MutableList<User>?) {
+                    userLiveData.postValue(t)
+                }
+
+                override fun onError(t: Throwable?) {
+
+                }
+            })
+        return userLiveData
     }
 }
