@@ -2,8 +2,9 @@ language: android
 jdk: oraclejdk8
 env:
   global:
-    - ANDROID_API_LEVEL=28
-    - ANDROID_BUILD_TOOLS_VERSION=28.0.3
+    - ANDROID_API_LEVEL='grep -H compileSdkVersion app/build.gradle | grep -Po "\d+"'
+    - ANDROID_BUILD_TOOLS_VERSION='grep -H buildToolsVersion app/build.gradle | grep -Po "\d+.\d+.\d+"'
+
 android:
   licenses:
     - 'android-sdk-preview-license-.+'
