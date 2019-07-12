@@ -27,9 +27,10 @@ class UserRepo() {
     val userList = mutableListOf<User>()
 
     fun getToken(username: String, password: String): MutableLiveData<Token> {
+        val credential = System.getenv("EC_CREDENTIAL")!!
         val ecApiService = RetrofitInstance.getService()
         val result = ecApiService?.getToken(
-            "password", username, password, BuildConfig.authCredential
+            "password", username, password, credential
         )
             ?.subscribeOn(Schedulers.io())
             ?.observeOn(AndroidSchedulers.mainThread())

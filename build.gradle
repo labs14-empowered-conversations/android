@@ -13,6 +13,8 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+
+    ext.credential = System.getenv('EC_CREDENTIAL') // replace the ext. prefix with def if you don’t want to provide the API token to the default properties which you can then access from all your build scripts
 }
 
 allprojects {

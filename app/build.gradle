@@ -19,7 +19,6 @@ android {
         versionCode 3
         versionName "2.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "authCredential", localProperties['authCredential']
     }
 
     buildTypes {
