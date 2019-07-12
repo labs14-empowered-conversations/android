@@ -3,6 +3,7 @@ package com.lambdaschool.empoweredconversation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lambdaschool.empoweredconversation.vm.LandingViewModel
@@ -16,6 +17,8 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var landingViewModel: LandingViewModel
+    private lateinit var usersAdapter: UsersListAdapter
+    private var users = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,11 +68,18 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         result.setSelection(1, false)
-        
-
+        usersAdapter = UsersListAdapter(users)
         users_list.apply {
             layoutManager = LinearLayoutManager(applicationContext)
+            adapter = usersAdapter
         }
 
+        if (intent.getStringExtra("token") != null) {
+            landingViewModel.getAllUsers("Bearer " + intent.getStringExtra("token")).observe(this, Observer {
+                users.clear()
+                users.addAll(it)
+                usersAdapter.notifyDataSetChanged()
+            })
+        }
     }
 }

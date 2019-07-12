@@ -82,7 +82,7 @@ class UserRepo() {
                 }
 
                 override fun onError(t: Throwable?) {
-
+                    val i = 0
                 }
             })
         return userLiveData

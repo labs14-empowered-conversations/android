@@ -35,6 +35,7 @@ class LoginForm : AppCompatActivity() {
                     edit_text_password.text.toString()).observe(this, Observer {
                     if (it.access_token != null) {
                         val intent = Intent(applicationContext, MainActivity::class.java)
+                        intent.putExtra("token", it.access_token)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     }
