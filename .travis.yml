@@ -39,4 +39,4 @@ cache:
     - $HOME/.android/build-cache
 before_install:
   - yes | sdkmanager "platforms;android-$ANDROID_API"
-  - echo "authCredential=""" > local.properties
+  - echo 'authCredential=""' > local.properties
