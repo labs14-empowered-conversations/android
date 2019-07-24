@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         youtube_player_view.addFullScreenListener(object: YouTubePlayerFullScreenListener{
             override fun onYouTubePlayerEnterFullScreen() {
                 requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-                linear_layout_bottom.visibility = View.GONE
                 linear_layout_top.visibility = View.GONE
                 toolbar_card_view.visibility = View.GONE
                 hideSystemUI()
@@ -75,7 +74,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onYouTubePlayerExitFullScreen() {
                 requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-                linear_layout_bottom.visibility = View.VISIBLE
                 linear_layout_top.visibility = View.VISIBLE
                 toolbar_card_view.visibility = View.VISIBLE
                 window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_VISIBLE)
@@ -91,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    
+
     private fun hideSystemUI() {
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
