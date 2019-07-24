@@ -13,12 +13,15 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var landingViewModel: LandingViewModel
+    private val videoId = "S0Q4gqBUs7c"
+    private var currentTime = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,16 +70,19 @@ class MainActivity : AppCompatActivity() {
             }
             .build()
 
-
         lifecycle.addObserver(youtube_player_view)
         youtube_player_view.addYouTubePlayerListener(object: AbstractYouTubePlayerListener(){
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                val videoId = ""
-                youTubePlayer.loadVideo(videoId, 0f)
-            }
-
             override fun onCurrentSecond(youTubePlayer: YouTubePlayer, second: Float) {
-                super.onCurrentSecond(youTubePlayer, second)
+                currentTime = second
+            }
+        })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        youtube_player_view.getYouTubePlayerWhenReady(object: YouTubePlayerCallback{
+            override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
+                youTubePlayer.loadVideo(videoId, currentTime)
             }
         })
     }
