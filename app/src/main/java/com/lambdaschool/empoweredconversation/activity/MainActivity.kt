@@ -1,12 +1,18 @@
 package com.lambdaschool.empoweredconversation.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
+import android.hardware.SensorManager
 import android.os.Bundle
+import android.view.OrientationEventListener
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.vm.LandingViewModel
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
+import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -14,14 +20,15 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.PlayerUiController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-
 class MainActivity : AppCompatActivity() {
+    private lateinit var uiController: PlayerUiController
     private lateinit var landingViewModel: LandingViewModel
-    private val videoId = "S0Q4gqBUs7c"
-    private var currentTime = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,59 +38,66 @@ class MainActivity : AppCompatActivity() {
 
         landingViewModel = ViewModelProviders.of(this).get(LandingViewModel::class.java)
 
-        val item1 = PrimaryDrawerItem().withIdentifier(1).withName("Home")
-        val item2 = PrimaryDrawerItem().withIdentifier(2).withName("Start a conversation")
+        val youtubePlayerView = findViewById<YouTubePlayerView>(R.id.youtube_player_view)
+        lifecycle.addObserver(youtubePlayerView)
+        uiController = youtubePlayerView.getPlayerUiController()
 
-        val header = AccountHeaderBuilder()
-            .withActivity(this)
-            .withHeaderBackground(R.drawable.gradient)
-            .addProfiles(
-                ProfileDrawerItem().withName("Empowered Conversations").withIcon(R.drawable.eclogowhite)
-            )
-            .withOnlyMainProfileImageVisible(true)
-            .withProfileImagesClickable(false)
-            .withSelectionListEnabledForSingleProfile(false)
-            .build()
-
-
-        val result = DrawerBuilder()
-            .withAccountHeader(header)
-            .withActivity(this)
-            .withToolbar(toolbar)
-            .addDrawerItems(
-                item1,
-                DividerDrawerItem(),
-                item2
-            )
-            .withSelectedItem(-1)
-            .withOnDrawerItemClickListener { view, position, drawerItem ->
-                if (drawerItem.identifier == 1L) {
-                    val intent = Intent(applicationContext, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
-                } else if (drawerItem.identifier == 2L) {
-                    val intent = Intent(applicationContext, ConversationForm::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
+        val orientationEventListener = object : OrientationEventListener(applicationContext, SensorManager.SENSOR_DELAY_UI) {
+            override fun onOrientationChanged(orientation: Int) {
+                if (orientation <= 10) {
+                    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 }
-                false
             }
-            .build()
+        }
 
-        lifecycle.addObserver(youtube_player_view)
-        youtube_player_view.addYouTubePlayerListener(object: AbstractYouTubePlayerListener(){
-            override fun onCurrentSecond(youTubePlayer: YouTubePlayer, second: Float) {
-                currentTime = second
+        if (orientationEventListener.canDetectOrientation()) {
+            orientationEventListener.enable()
+        }
+
+        initializeYoutubePlayer(youtube_player_view)
+    }
+
+    private fun initializeYoutubePlayer(youtubePlayer: YouTubePlayerView) {
+        youtubePlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                youTubePlayer.loadVideo("S0Q4gqBUs7c", 0f)
+            }
+        })
+
+        youtube_player_view.addFullScreenListener(object: YouTubePlayerFullScreenListener{
+            override fun onYouTubePlayerEnterFullScreen() {
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                linear_layout_bottom.visibility = View.GONE
+                linear_layout_top.visibility = View.GONE
+                toolbar_card_view.visibility = View.GONE
+                hideSystemUI()
+            }
+
+            override fun onYouTubePlayerExitFullScreen() {
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                linear_layout_bottom.visibility = View.VISIBLE
+                linear_layout_top.visibility = View.VISIBLE
+                toolbar_card_view.visibility = View.VISIBLE
+                window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_VISIBLE)
             }
         })
     }
 
-    override fun onResume() {
-        super.onResume()
-        youtube_player_view.getYouTubePlayerWhenReady(object: YouTubePlayerCallback{
-            override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo(videoId, currentTime)
-            }
-        })
+    override fun onBackPressed() {
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    
+    private fun hideSystemUI() {
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
     }
 }
