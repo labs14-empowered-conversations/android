@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
-import com.lambdaschool.empoweredconversation.App
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.vm.LandingViewModel
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
@@ -12,7 +11,11 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var landingViewModel: LandingViewModel
@@ -64,5 +67,17 @@ class MainActivity : AppCompatActivity() {
             }
             .build()
 
+
+        lifecycle.addObserver(youtube_player_view)
+        youtube_player_view.addYouTubePlayerListener(object: AbstractYouTubePlayerListener(){
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val videoId = ""
+                youTubePlayer.loadVideo(videoId, 0f)
+            }
+
+            override fun onCurrentSecond(youTubePlayer: YouTubePlayer, second: Float) {
+                super.onCurrentSecond(youTubePlayer, second)
+            }
+        })
     }
 }
