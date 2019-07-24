@@ -13,7 +13,7 @@ class RetrofitInstance {
         private var retrofit: Retrofit? = null
         private const val BASE_URL = "https://empoweredconversation.herokuapp.com/"
 
-        fun getService(): ECApiService? {
+        fun getService(): ConversationService? {
             if (retrofit == null) {
                 val interceptor = HttpLoggingInterceptor()
                 interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -27,7 +27,7 @@ class RetrofitInstance {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             }
-            return retrofit?.create(ECApiService::class.java)
+            return retrofit?.create(ConversationService::class.java)
         }
     }
 }

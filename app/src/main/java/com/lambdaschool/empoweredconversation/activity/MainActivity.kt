@@ -1,26 +1,29 @@
-package com.lambdaschool.empoweredconversation
+package com.lambdaschool.empoweredconversation.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import com.daimajia.androidanimations.library.Techniques
-import com.daimajia.androidanimations.library.YoYo
+import androidx.lifecycle.ViewModelProviders
+import com.lambdaschool.empoweredconversation.App
+import com.lambdaschool.empoweredconversation.R
+import com.lambdaschool.empoweredconversation.vm.LandingViewModel
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
-import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.content_converstation_form.*
+import kotlinx.android.synthetic.main.activity_main.*
 
-class ConversationForm : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
+    private lateinit var landingViewModel: LandingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_conversation_form)
+        setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Start a Conversation"
+        supportActionBar?.title = "Home"
+
+        landingViewModel = ViewModelProviders.of(this).get(LandingViewModel::class.java)
 
         val item1 = PrimaryDrawerItem().withIdentifier(1).withName("Home")
         val item2 = PrimaryDrawerItem().withIdentifier(2).withName("Start a conversation")
@@ -35,6 +38,7 @@ class ConversationForm : AppCompatActivity() {
             .withProfileImagesClickable(false)
             .withSelectionListEnabledForSingleProfile(false)
             .build()
+
 
         val result = DrawerBuilder()
             .withAccountHeader(header)
@@ -60,13 +64,5 @@ class ConversationForm : AppCompatActivity() {
             }
             .build()
 
-        result.setSelection(2, false)
-
-        continue_button.setOnClickListener {
-            YoYo.with(Techniques.Shake)
-                .duration(200)
-                .repeat(0)
-                .playOn(users_name_edit_text)
-        }
     }
 }

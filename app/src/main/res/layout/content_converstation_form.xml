@@ -5,13 +5,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ConversationForm" android:paddingStart="10dp" android:paddingEnd="10dp"
-        android:background="#65D7B7">
+        tools:context=".activity.ConversationForm" android:paddingStart="10dp" android:paddingEnd="10dp"
+        android:background="@color/colorDarkTeal">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_gravity="center" app:cardElevation="5dp"
-            app:contentPadding="5dp" app:cardCornerRadius="6dp" android:background="#65D7B7"
+            app:contentPadding="5dp" app:cardCornerRadius="6dp"
             app:cardUseCompatPadding="true">
         <LinearLayout
                 android:orientation="vertical"
@@ -24,7 +24,7 @@
             <TextView
                     android:text="Start a Conversation"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:textSize="24sp" android:textColor="#65D7B7"
+                    android:layout_height="wrap_content" android:textSize="24sp" android:textColor="@color/colorLightTeal"
                     android:textAlignment="center"/>
             <LinearLayout
                     android:orientation="horizontal"
@@ -42,7 +42,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="phone"
                         android:ems="10"
-                        android:id="@+id/users_phone_edit_text" android:hint="Your Phone Number"
+                        android:id="@+id/survivor_number" android:hint="Your Phone Number"
                         android:layout_weight="1"/>
             </LinearLayout>
             <LinearLayout
@@ -55,14 +55,14 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
                         android:ems="10"
-                        android:id="@+id/reciever_name_edit_text" android:hint="Friend/Family Name"
+                        android:id="@+id/ff_name" android:hint="Friend/Family Name"
                         android:layout_weight="1"/>
                 <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
                         android:ems="10"
-                        android:id="@+id/reciever_phone_number" android:hint="Friend/Family Phone  Number"
+                        android:id="@+id/ff_number" android:hint="Friend/Family Phone  Number"
                         android:layout_weight="1"/>
             </LinearLayout>
             <Button
