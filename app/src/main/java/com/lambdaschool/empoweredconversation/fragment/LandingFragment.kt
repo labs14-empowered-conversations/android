@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.lambdaschool.empoweredconversation.PhraseList
@@ -16,15 +17,17 @@ class LandingFragment : Fragment() {
     private val carouselJob = Job()
     private val carouselScope = CoroutineScope(Dispatchers.IO + carouselJob)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_landing, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateCarousel()
+
+        start_now_button.setOnClickListener{
+            view.findNavController().navigate(R.id.conversationFragment)
+        }
     }
 
     private fun updateCarousel() {
