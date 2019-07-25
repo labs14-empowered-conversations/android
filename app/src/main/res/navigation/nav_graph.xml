@@ -5,6 +5,8 @@
             app:startDestination="@id/landingFragment">
     <fragment android:id="@+id/landingFragment" android:name="com.lambdaschool.empoweredconversation.fragment.LandingFragment"
               android:label="Home" tools:layout="@layout/fragment_landing">
+        <action android:id="@+id/action_landingFragment_to_conversationFragment"
+                app:destination="@id/conversationFragment"/>
     </fragment>
     <fragment android:id="@+id/conversationFragment" android:name="com.lambdaschool.empoweredconversation.fragment.ConversationFragment"
               android:label="Use our Tool" tools:layout="@layout/fragment_conversation">
