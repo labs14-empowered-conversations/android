@@ -1,5 +1,6 @@
 package com.lambdaschool.empoweredconversation.di
 
+/*
 import android.app.Application
 import com.lambdaschool.empoweredconversation.repository.ConversationRepository
 import dagger.Module
@@ -14,4 +15,4 @@ class ConversationRepoModule {
     fun conversationRepoProvider(application: Application): ConversationRepository {
         return ConversationRepository(application)
     }
-}
+}*/

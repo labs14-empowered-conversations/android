@@ -1,5 +1,6 @@
 package com.lambdaschool.empoweredconversation
 
+/*
 import android.app.Application
 import com.lambdaschool.empoweredconversation.di.AppModule
 import com.lambdaschool.empoweredconversation.di.ConversationComponent
@@ -21,4 +22,4 @@ class App: Application() {
             .appModule(AppModule(this))
             .build()
     }
-}
+}*/
