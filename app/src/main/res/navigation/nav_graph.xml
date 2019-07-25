@@ -4,6 +4,9 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
             app:startDestination="@id/landingFragment">
     <fragment android:id="@+id/landingFragment" android:name="com.lambdaschool.empoweredconversation.fragment.LandingFragment"
-              android:label="fragment_landing" tools:layout="@layout/fragment_landing">
+              android:label="Home" tools:layout="@layout/fragment_landing">
+    </fragment>
+    <fragment android:id="@+id/conversationFragment" android:name="com.lambdaschool.empoweredconversation.fragment.ConversationFragment"
+              android:label="Use our Tool" tools:layout="@layout/fragment_conversation">
     </fragment>
 </navigation>
