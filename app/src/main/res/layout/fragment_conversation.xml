@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.ConversationForm" android:paddingStart="10dp" android:paddingEnd="10dp"
+        tools:context=".fragment.ConversationFragment" android:paddingStart="10dp" android:paddingEnd="10dp"
         android:background="@color/colorDarkTeal">
 
     <androidx.cardview.widget.CardView
