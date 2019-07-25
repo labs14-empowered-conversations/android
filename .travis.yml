@@ -1,42 +1,65 @@
 language: android
+
+os: linux
+dist: trusty
+sudo: required
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libstdc++-4.9-dev # https://github.com/nodegit/nodegit/issues/853
+      - gcc-4.8
+      - g++-4.8
+
 jdk:
-  - oraclejdk8
-env:
-  global:
-    - ANDROID_API=28
-    - EMULATOR_API=25
-    - ANDROID_BUILD_TOOLS=28.0.3
+  - &jdk_for_publishing oraclejdk8
+
 android:
   components:
     - tools
-    - android-$EMULATOR_API
+    - tools # Duplicated as per https://github.com/travis-ci/travis-ci/issues/6040#issuecomment-219367943
+    - build-tools-26.0.2
+    - android-26
     - platform-tools
-    - tools
-    - build-tools-$ANDROID_BUILD_TOOLS
-    - android-$ANDROID_API
-    - extra-android-support
-    - sys-img-armeabi-v7a-android-$EMULATOR_API
-  licenses:
-    - ".+"
-before_script:
-  - echo "y" | android update sdk -a --no-ui --filter android-$EMULATOR_API
-  - echo "y" | android update sdk -a --no-ui --filter sys-img-armeabi-v7a-android-$EMULATOR_API
-  - android list targets | grep -E '^id:' | awk -F '"' '{$1=""; print $2}' # list all targets
-  - echo no | android create avd --force -n test -t android-$EMULATOR_API --abi armeabi-v7a
-  - emulator -avd test -no-skin -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-  - adb wait-for-device get-serialno
-  - cd ${TRAVIS_BUILD_DIR}
-  - chmod +x gradlew
-  - ./gradlew --version
-  - ./gradlew clean
-cache:
-  directories:
-    - $HOME/.m2
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-    - $HOME/.android/build-cache
+    - extra-android-m2repository
+
 before_install:
-  - yes | sdkmanager "platforms;android-$ANDROID_API"
+  - wget https://github.com/bazelbuild/bazel/releases/download/"${BAZEL_VERSION}"/bazel_"${BAZEL_VERSION}"-linux-x86_64.deb
+  - sudo dpkg -i bazel_"${BAZEL_VERSION}"-linux-x86_64.deb
+  - sudo rm -f /etc/mavenrc
+  - wget http://www.us.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
+  - tar -zxf apache-maven-3.1.1-bin.tar.gz
+  - export PATH="$PWD/apache-maven-3.1.1/bin:$PATH"
+  - mkdir travis_bin
+  - ln -s $(which gcc-4.8) travis_bin/gcc
+  - ln -s $(which g++-4.8) travis_bin/g++
+  - export PATH="${PWD}/travis_bin:${PATH}"
   - echo 'authCredential=""' > local.properties
+script:
+  - bazel test --test_output errors //...
+  - pushd examples && mvn compile && popd
+
+env:
+  global:
+    # Encrypted credentials for deploying snapshots.
+    - secure: eGc3LHBRIPmTnXLM1YoIqG1do9BkpFI2pJm3fz5Cd8UaXtf7Oefa+Ts3rcn4ipee5A+lf8kEouPshSoaQs81KZ2/qf8rSTCIqeFjHR8hzmOVYo/0zRfS/VSUT0yqN+jeRhuNk3+A49RTPlcfJqPv3tyddtrM1vF7axhCJPQIRJM=
+    - secure: LTzrlqcSNeZTOV52D3ibY9RBdxY4Yu8dUOYhAonrWLE+eDTzuoyCzcPw8pEcYVNUi1rG6Q7v3QBDTnBztsPoCbcN5tEGjw5cQEbfEzSTkWaNCFjncWn36cLwx9lgbF+5Db/L0mYJ36unDKUpKVC8AgOtxQibfv/ffugfxxj8ohY=
+
+    # Encrypted GitHub access token to allow util/generate-latest-docs.sh to
+    # push Javadoc to gh-pages.
+    # This uses an access token created by cgdecker and will need to be updated
+    # (see util/generate-latest-docs.sh for a link) if he no longer has
+    # permission to push to the repo.
+    - secure: "UpTUhCQzAGbr5JetRg2GZxp/dPDep/7Il3yGeyDECopciWdx41OPk/QNqAXBhNtKuEaMVsmASyoteuhgaTryQdV4qUIGVOMhES6kbOlYy3nwK44VdsNeeepwVospyDyZbxMtXq5LuHWuTADmAl1mdjNPNoziXc523zjnUzUx/EQ="
+    - JDK_FOR_PUBLISHING: *jdk_for_publishing
+    - BAZEL_VERSION="0.27.1"
+
+after_success:
+  - util/generate-latest-docs.sh
+  - util/publish-snapshot-on-commit.sh
+
+branches:
+  only:
+    - master
+    - /^release.*$/
