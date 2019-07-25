@@ -1,8 +1,6 @@
 package com.lambdaschool.empoweredconversation.activity
 
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -49,7 +47,7 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.landingFragment),
+            setOf(R.id.landingFragment, R.id.conversationFragment),
             drawerLayout
         )
     }
@@ -58,7 +56,6 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
         val retValue = super.onCreateOptionsMenu(menu)
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         if (navigationView == null) {
-
             menuInflater.inflate(R.menu.nav_menu, menu)
             return true
         }
@@ -70,7 +67,7 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
             android.R.id.home ->
                 drawer_layout.openDrawer(GravityCompat.START)
         }
-        if (item != null){
+        if (item != null) {
             return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
         }
         return super.onOptionsItemSelected(item)
