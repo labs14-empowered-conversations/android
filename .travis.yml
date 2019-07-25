@@ -22,6 +22,7 @@ android:
 before_install:
   - touch $HOME/.android/repositories.cfg
   - echo 'authCredential=""' > local.properties
+  - yes | sdkmanager --licenses
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
