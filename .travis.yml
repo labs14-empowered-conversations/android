@@ -16,6 +16,10 @@ android:
     - android-$ANDROID_API
     - extra-android-support
     - sys-img-armeabi-v7a-android-$EMULATOR_API
+    - platform-tools
+    - extra-android-m2repository
+    - tools
+    - tools
   licenses:
     - ".+"
 before_script:
