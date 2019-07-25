@@ -94,12 +94,12 @@
                 android:layout_height="match_parent">
 
             <ImageView
-                    android:src="@drawable/empoweredconversationlogo"
+                    android:scaleType="fitXY"
                     android:layout_width="0dp"
                     android:layout_height="0dp" android:id="@+id/imageView"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent" android:background="@drawable/landing_stock_image"/>
             <androidx.cardview.widget.CardView
                     android:layout_width="200dp"
                     android:layout_height="100dp"
@@ -108,11 +108,21 @@
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="8dp" app:cardCornerRadius="20dp" app:cardElevation="5dp"
-                    app:contentPadding="5dp">
+                    app:contentPadding="20dp" android:alpha="0.55">
                 <LinearLayout
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" android:id="@+id/phrase_container">
+                    <TextView
+                            android:text="I believe in... "
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView5"
+                            android:textAlignment="center" android:textColor="@color/colorPrimaryDark"/>
+                    <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/phrase_textview"
+                            android:textAlignment="center" android:textColor="@color/colorPrimaryDark"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
