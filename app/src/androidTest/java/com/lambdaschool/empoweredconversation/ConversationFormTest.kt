@@ -1,6 +1,5 @@
 package com.lambdaschool.empoweredconversation
 
-/*
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
@@ -24,4 +23,4 @@ class ConversationFormTest {
         Espresso.onView(ViewMatchers.withId(R.id.continue_button))
     }
 
-}*/
+}

@@ -1,6 +1,5 @@
 package com.lambdaschool.empoweredconversation.di
 
-/*
 import android.app.Application
 import dagger.Module
 import dagger.Provides
@@ -14,4 +13,4 @@ class AppModule(private var application: Application) {
     fun applicationProvider(): Application {
         return application
     }
-}*/
+}
