@@ -4,6 +4,7 @@ import androidx.test.espresso.Espresso
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
+import com.lambdaschool.empoweredconversation.activity.ConversationForm
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
