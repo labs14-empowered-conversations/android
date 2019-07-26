@@ -1,5 +1,6 @@
 package com.lambdaschool.empoweredconversation.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import com.github.paolorotolo.appintro.AppIntro
@@ -21,7 +22,9 @@ class AppIntroActivity : AppIntro() {
     }
 
     override fun onDonePressed() {
-        super.onDonePressed()
+        startActivity(Intent(applicationContext,
+            MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        finish()
     }
 
     private fun handleViewPager() {
