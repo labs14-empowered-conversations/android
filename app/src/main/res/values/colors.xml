@@ -6,4 +6,6 @@
     <color name="colorLightTeal">#8FEDC2</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorDarkGrey">#5C5C5C</color>
+    <color name="color_intro_slide_background">#418FEDC2</color>
+    <color name="color_intro_slide_background_bar">#008FEDC2</color>
 </resources>
