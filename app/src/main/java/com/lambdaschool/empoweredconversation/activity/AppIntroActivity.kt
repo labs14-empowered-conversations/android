@@ -8,6 +8,7 @@ import com.github.paolorotolo.appintro.AppIntroFragment
 import com.github.paolorotolo.appintro.model.SliderPage
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.fragment.IntroSlide1Fragment
+import com.lambdaschool.empoweredconversation.fragment.IntroSlide2Fragment
 
 class AppIntroActivity : AppIntro() {
 
@@ -15,22 +16,15 @@ class AppIntroActivity : AppIntro() {
         super.onCreate(savedInstanceState)
 
         addSlide(IntroSlide1Fragment())
+        addSlide(IntroSlide2Fragment())
 
         setBarColor(resources.getColor(R.color.color_intro_slide_background_bar))
         setSeparatorColor(resources.getColor(R.color.color_intro_slide_background_bar))
-        isProgressButtonEnabled = false
         showSkipButton(false)
-    }
-
-    override fun onSkipPressed(currentFragment: Fragment?) {
-        super.onSkipPressed(currentFragment)
     }
 
     override fun onDonePressed() {
         super.onDonePressed()
     }
 
-    override fun onSlideChanged() {
-        super.onSlideChanged()
-    }
 }
