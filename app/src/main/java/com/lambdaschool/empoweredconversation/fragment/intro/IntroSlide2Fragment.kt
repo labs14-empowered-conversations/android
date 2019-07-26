@@ -1,4 +1,4 @@
-package com.lambdaschool.empoweredconversation.fragment
+package com.lambdaschool.empoweredconversation.fragment.intro
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +8,10 @@ import android.view.ViewGroup
 
 import com.lambdaschool.empoweredconversation.R
 
-class IntroSlide3Fragment : Fragment() {
+class IntroSlide2Fragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_intro_slide3, container, false)
+        return inflater.inflate(R.layout.fragment_intro_slide2, container, false)
     }
 
 }

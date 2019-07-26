@@ -2,18 +2,13 @@ package com.lambdaschool.empoweredconversation.activity
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import com.github.paolorotolo.appintro.AppIntro
-import androidx.fragment.app.Fragment
-import com.github.paolorotolo.appintro.AppIntroFragment
-import com.github.paolorotolo.appintro.IndicatorController
-import com.github.paolorotolo.appintro.model.SliderPage
 import com.lambdaschool.empoweredconversation.R
-import com.lambdaschool.empoweredconversation.fragment.IntroSlide1Fragment
-import com.lambdaschool.empoweredconversation.fragment.IntroSlide2Fragment
-import com.lambdaschool.empoweredconversation.fragment.IntroSlide3Fragment
-import com.lambdaschool.empoweredconversation.fragment.IntroSlide4Fragment
+import com.lambdaschool.empoweredconversation.fragment.intro.IntroSlide1Fragment
+import com.lambdaschool.empoweredconversation.fragment.intro.IntroSlide2Fragment
+import com.lambdaschool.empoweredconversation.fragment.intro.IntroSlide3Fragment
+import com.lambdaschool.empoweredconversation.fragment.intro.IntroSlide4Fragment
 
 class AppIntroActivity : AppIntro() {
 
