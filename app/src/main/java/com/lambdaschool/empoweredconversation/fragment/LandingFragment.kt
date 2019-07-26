@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.fragment_landing.*
 import kotlinx.coroutines.*
 
 class LandingFragment : Fragment() {
-    private val carouselJob = Job()
-    private val carouselScope = CoroutineScope(Dispatchers.IO + carouselJob)
+    private lateinit var carouselJob: Job
+    private lateinit var carouselScope: CoroutineScope
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_landing, container, false)
@@ -23,14 +23,20 @@ class LandingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateCarousel()
 
         start_now_button.setOnClickListener{
             view.findNavController().navigate(R.id.conversationFragment)
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        updateCarousel()
+    }
+
     private fun updateCarousel() {
+        carouselJob = Job()
+        carouselScope = CoroutineScope(Dispatchers.IO + carouselJob)
         PhraseList.setStartingIndex()
         carouselScope.launch {
             while (phrase_textview != null) {
@@ -60,5 +66,6 @@ class LandingFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         carouselJob.cancel()
+        carouselScope.cancel()
     }
 }
