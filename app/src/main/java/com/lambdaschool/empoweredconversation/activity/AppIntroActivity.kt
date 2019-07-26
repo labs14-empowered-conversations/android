@@ -10,6 +10,7 @@ import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.fragment.IntroSlide1Fragment
 import com.lambdaschool.empoweredconversation.fragment.IntroSlide2Fragment
 import com.lambdaschool.empoweredconversation.fragment.IntroSlide3Fragment
+import com.lambdaschool.empoweredconversation.fragment.IntroSlide4Fragment
 
 class AppIntroActivity : AppIntro() {
 
@@ -19,10 +20,20 @@ class AppIntroActivity : AppIntro() {
         addSlide(IntroSlide1Fragment())
         addSlide(IntroSlide2Fragment())
         addSlide(IntroSlide3Fragment())
+        addSlide(IntroSlide4Fragment())
 
         setBarColor(resources.getColor(R.color.color_intro_slide_background_bar))
         setSeparatorColor(resources.getColor(R.color.color_intro_slide_background_bar))
         showSkipButton(false)
+
+        //setFadeAnimation()
+        //setZoomAnimation()
+        //setFlowAnimation()
+        setDepthAnimation()
+
+        setNextArrowColor(resources.getColor(R.color.colorDarkTeal))
+        setColorDoneText(resources.getColor(R.color.colorDarkTeal))
+
     }
 
     override fun onDonePressed() {
