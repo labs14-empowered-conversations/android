@@ -1,5 +1,6 @@
 package com.lambdaschool.empoweredconversation.activity
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -24,6 +25,10 @@ class AppIntroActivity : AppIntro() {
     override fun onDonePressed() {
         startActivity(Intent(applicationContext,
             MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        getSharedPreferences("AppIntro", Context.MODE_PRIVATE)
+            .edit()
+            .putBoolean("AppIntroViewed", true)
+            .apply()
         finish()
     }
 

@@ -1,5 +1,8 @@
 package com.lambdaschool.empoweredconversation.activity
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -21,13 +24,23 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListener {
     private lateinit var landingViewModel: LandingViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        prefs = getSharedPreferences("AppIntro", Context.MODE_PRIVATE)
 
-        landingViewModel = ViewModelProviders.of(this).get(LandingViewModel::class.java)
+        if (!prefs.getBoolean("AppIntroViewed", false)) {
+            startActivity(
+                Intent(applicationContext, AppIntroActivity::class.java)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            finish()
+        }
+
+
+            landingViewModel = ViewModelProviders.of(this).get(LandingViewModel::class.java)
 
         val navController = findNavController(R.id.nav_host_fragment)
         findViewById<NavigationView>(R.id.nav_view).setupWithNavController(navController)
@@ -67,9 +80,9 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
             android.R.id.home ->
                 drawer_layout.openDrawer(GravityCompat.START)
         }
-        if (item != null) {
+        if (item != null)
             return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
-        }
+
         return super.onOptionsItemSelected(item)
     }
 
