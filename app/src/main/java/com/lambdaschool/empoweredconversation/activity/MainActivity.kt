@@ -30,17 +30,19 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
         prefs = getSharedPreferences("AppIntro", Context.MODE_PRIVATE)
 
         if (!prefs.getBoolean("AppIntroViewed", false)) {
             startActivity(
                 Intent(applicationContext, AppIntroActivity::class.java)
-                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
             finish()
         }
 
 
-            landingViewModel = ViewModelProviders.of(this).get(LandingViewModel::class.java)
+        landingViewModel = ViewModelProviders.of(this).get(LandingViewModel::class.java)
 
         val navController = findNavController(R.id.nav_host_fragment)
         findViewById<NavigationView>(R.id.nav_view).setupWithNavController(navController)

@@ -10,6 +10,7 @@ import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.lambdaschool.empoweredconversation.PhraseList
 import com.lambdaschool.empoweredconversation.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_landing.*
 import kotlinx.coroutines.*
 
@@ -23,6 +24,7 @@ class LandingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.toolbar_title?.text = "Home"
 
         start_now_button.setOnClickListener{
             view.findNavController().navigate(R.id.conversationFragment)
