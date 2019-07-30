@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   tools:context=".fragment.intro.IntroSlide1Fragment"
-                                                   android:background="@color/colorPrimary">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".fragment.intro.IntroSlide1Fragment">
+
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:background="@color/color_intro_slide_background">
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_intro_slide_background"
+        android:orientation="vertical">
+
         <ImageView
-                android:src="@drawable/empoweredconversationlogo"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center_horizontal" android:layout_marginBottom="-25dp"/>
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="-25dp"
+            android:src="@drawable/empoweredconversationlogo" />
+
         <TextView
-                android:text="Let's get started on \nyour journey of \nempowerment!"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:textAlignment="center"
-                android:textSize="28sp" android:textColor="@color/colorDarkTeal"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Let's get started on \nyour journey of \nempowerment!"
+            android:textAlignment="center"
+            android:textColor="@color/colorDarkTeal"
+            android:textSize="28sp" />
+
         <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" tools:src="@tools:sample/backgrounds/scenic"
-                android:id="@+id/imageView6" android:adjustViewBounds="true" android:layout_marginTop="55dp"/>
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/slide_4_image" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
