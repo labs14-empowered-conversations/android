@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.daimajia.androidanimations.library.Techniques
-import com.daimajia.androidanimations.library.YoYo
 import com.lambdaschool.empoweredconversation.App
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.model.Conversation
@@ -19,7 +17,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_conversation.*
 import javax.inject.Inject
 
-class ConversationFragment : Fragment() {
+class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialogListener {
+    override fun onFinishTosDialog(accepted: Boolean) {
+        if (accepted) {
+            continue_button.text = "Send message"
+        }
+    }
+
     private lateinit var survivorNumber: String
     private lateinit var ffName: String
     private lateinit var ffNumber: String
@@ -44,34 +48,40 @@ class ConversationFragment : Fragment() {
             conversationViewModelFactory
         ).get(ConversationViewModel::class.java)
 
+
         continue_button.setOnClickListener {
-            YoYo.with(Techniques.Shake)
-                .duration(200)
-                .repeat(0)
-                .playOn(users_name_edit_text)
+            if (continue_button.text.toString() == "Start") {
+                fragmentManager?.let { fragmentManager ->
+                    val tosFrag = TermsOfServiceFragment()
+                    tosFrag.setTargetFragment(this, 0)
+                    tosFrag.show(fragmentManager, "tos_fragment")
+                }
+            } else {
+                survivorNumber = survivor_number.text.toString()
+                ffName = ff_name.text.toString()
+                ffNumber = ff_number.text.toString()
 
-            survivorNumber = survivor_number.text.toString()
-            ffName = ff_name.text.toString()
-            ffNumber = ff_number.text.toString()
-
-            if (validateFields(survivorNumber, ffName, ffNumber)) {
-                conversationViewModel
-                    .postConversation(Conversation(survivorNumber, ffName, ffNumber))
-                    .observe(this, Observer { convo ->
-                        convo?.let {
-                            Log.i("Conversation", it.ffname)
-                        }
-                    })
+                if (validateFields(survivorNumber, ffName, ffNumber)) {
+                    conversationViewModel
+                        .postConversation(Conversation(survivorNumber, ffName, ffNumber))
+                        .observe(this, Observer { convo ->
+                            convo?.let {
+                                Log.i("Conversation", it.ffname)
+                            }
+                        })
+                }
             }
+
         }
 
     }
 
-    fun validateFields(
-        survivorNumber: String, ffName: String,
-        ffNumber: String
-    ): Boolean {
+}
 
-        return true
-    }
+fun validateFields(
+    survivorNumber: String, ffName: String,
+    ffNumber: String
+): Boolean {
+
+    return true
 }
