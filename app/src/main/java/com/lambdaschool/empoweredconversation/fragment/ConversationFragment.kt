@@ -61,7 +61,7 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
                 ffName = ff_name.text.toString()
                 ffNumber = ff_number.text.toString()
 
-                if (validateFields(survivorNumber, ffName, ffNumber)) {
+                if (validateFields()) {
                     conversationViewModel
                         .postConversation(Conversation(survivorNumber, ffName, ffNumber))
                         .observe(this, Observer { convo ->
@@ -78,10 +78,7 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
 
 }
 
-fun validateFields(
-    survivorNumber: String, ffName: String,
-    ffNumber: String
-): Boolean {
+fun validateFields(): Boolean {
 
     return true
 }

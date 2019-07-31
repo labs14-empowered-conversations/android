@@ -80,14 +80,14 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Type name here"
-                    android:inputType="phone"
                     app:boxStrokeColor="@color/colorPrimaryDark"
                     app:hintTextAppearance="@style/GreenTextInputLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ff_name"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:inputType="textPersonName"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -120,8 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:ems="10"
-                android:hint="(888) ***-***"
-                android:inputType="textPersonName"
+                android:hint="###-###-####"
                 app:boxStrokeColor="@color/colorPrimaryDark"
                 app:hintTextAppearance="@style/GreenTextInputLayout"
                 app:layout_constraintEnd_toStartOf="@id/guideline4"
@@ -131,7 +130,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ff_number"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:inputType="phone"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -141,8 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:ems="10"
-                android:hint="(888) ***-***"
-                android:inputType="textPersonName"
+                android:hint="###-###-####"
                 app:boxStrokeColor="@color/colorPrimaryDark"
                 app:hintTextAppearance="@style/GreenTextInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -153,7 +152,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/survivor_number"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:inputType="phone"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
