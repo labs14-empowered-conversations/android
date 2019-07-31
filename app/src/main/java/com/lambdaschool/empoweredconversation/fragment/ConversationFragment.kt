@@ -1,9 +1,7 @@
 package com.lambdaschool.empoweredconversation.fragment
 
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextUtils
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +12,14 @@ import androidx.lifecycle.ViewModelProviders
 import com.lambdaschool.empoweredconversation.App
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.model.Conversation
+import com.lambdaschool.empoweredconversation.removeError
 import com.lambdaschool.empoweredconversation.vm.ConversationViewModel
 import com.lambdaschool.empoweredconversation.vm.ConversationViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_conversation.*
 import javax.inject.Inject
+
+
 
 class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialogListener {
     override fun onFinishTosDialog(accepted: Boolean) {
@@ -26,7 +27,7 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
             continue_button.text = "Send message"
         }
     }
-    
+
     private lateinit var survivorNumber: String
     private lateinit var ffName: String
     private lateinit var ffNumber: String
@@ -51,6 +52,9 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
             conversationViewModelFactory
         ).get(ConversationViewModel::class.java)
 
+        ff_name.removeError(ff_name_layout)
+        ff_number.removeError(ff_number_layout)
+        survivor_number.removeError(survivor_number_layout)
 
         continue_button.setOnClickListener {
             survivorNumber = survivor_number.text.toString()
@@ -86,10 +90,20 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
         if (TextUtils.isEmpty(ffNumber)) {
             ff_number_layout.error = "Please Provide a Number"
             return false
+        } else {
+            if (ffNumber.replace("[-+.^:,]".toRegex(), "").length != 10){
+                ff_number_layout.error = "Please Provide a Valid Number"
+                return false
+            }
         }
         if (TextUtils.isEmpty(survivorNumber)) {
             survivor_number_layout.error = "Please Provide a Number"
             return false
+        } else {
+            if (survivorNumber.replace("[-+.^:,]".toRegex(), "").length != 10){
+                survivor_number_layout.error = "Please Provide a Valid Number"
+                return false
+            }
         }
         return true
     }
