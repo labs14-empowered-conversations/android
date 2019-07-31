@@ -24,9 +24,7 @@ class TermsOfServiceFragment : DialogFragment() {
         }
         accept_button.isEnabled = false
         tos_checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                accept_button.isEnabled = true
-            }
+            accept_button.isEnabled = isChecked
         }
         accept_button.setOnClickListener {
             listener.onFinishTosDialog(true)
