@@ -16,6 +16,7 @@ class TermsOfServiceFragment : DialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         try {
             listener = targetFragment as TosFragmentDialogListener
         } catch (e: ClassCastException) {
