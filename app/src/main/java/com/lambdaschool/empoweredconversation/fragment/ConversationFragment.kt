@@ -1,6 +1,9 @@
 package com.lambdaschool.empoweredconversation.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +26,7 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
             continue_button.text = "Send message"
         }
     }
-
+    
     private lateinit var survivorNumber: String
     private lateinit var ffName: String
     private lateinit var ffNumber: String
@@ -50,18 +53,18 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
 
 
         continue_button.setOnClickListener {
-            if (continue_button.text.toString() == "Start") {
-                fragmentManager?.let { fragmentManager ->
-                    val tosFrag = TermsOfServiceFragment()
-                    tosFrag.setTargetFragment(this, 0)
-                    tosFrag.show(fragmentManager, "tos_fragment")
-                }
-            } else {
-                survivorNumber = survivor_number.text.toString()
-                ffName = ff_name.text.toString()
-                ffNumber = ff_number.text.toString()
+            survivorNumber = survivor_number.text.toString()
+            ffName = ff_name.text.toString()
+            ffNumber = ff_number.text.toString()
 
-                if (validateFields()) {
+            if (validateFields()) {
+                if (continue_button.text.toString() == "Start") {
+                    fragmentManager?.let { fragmentManager ->
+                        val tosFrag = TermsOfServiceFragment()
+                        tosFrag.setTargetFragment(this, 0)
+                        tosFrag.show(fragmentManager, "tos_fragment")
+                    }
+                } else {
                     conversationViewModel
                         .postConversation(Conversation(survivorNumber, ffName, ffNumber))
                         .observe(this, Observer { convo ->
@@ -71,14 +74,27 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
                         })
                 }
             }
-
         }
 
     }
 
+    private fun validateFields(): Boolean {
+        if (TextUtils.isEmpty(ffName)) {
+            ff_name_layout.error = "Please Provide a Name"
+            return false
+        }
+        if (TextUtils.isEmpty(ffNumber)) {
+            ff_number_layout.error = "Please Provide a Number"
+            return false
+        }
+        if (TextUtils.isEmpty(survivorNumber)) {
+            survivor_number_layout.error = "Please Provide a Number"
+            return false
+        }
+        return true
+    }
+
 }
 
-fun validateFields(): Boolean {
 
-    return true
-}
+
