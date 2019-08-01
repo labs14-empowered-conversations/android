@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.lambdaschool.empoweredconversation.App
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.model.Conversation
@@ -83,11 +84,19 @@ LoginFragmentDialog.LoginFragmentDialogListener {
                     }
                 } else {
                     conversationViewModel
-                        .postConversation(Conversation(survivorNumber, ffName, ffNumber))
+                        .postConversation(Conversation(0, survivorNumber, ffName, ffNumber))
                         .observe(this, Observer { convo ->
                             convo?.let {
                                 Log.i("Conversation", it.ffname)
+                                Snackbar.make(conversation_parent,
+                                    "Your message was successfully delivered!", Snackbar.LENGTH_LONG).show()
+                                ff_name.setText("")
+                                ff_number.setText("")
+                                survivor_number.setText("")
                             }
+                            if (convo == null)
+                                Snackbar.make(conversation_parent,
+                                "Your message could not be delivered", Snackbar.LENGTH_LONG).show()
                         })
                 }
             }
