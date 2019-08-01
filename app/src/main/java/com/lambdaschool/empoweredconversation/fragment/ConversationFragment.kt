@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -88,15 +89,13 @@ LoginFragmentDialog.LoginFragmentDialogListener {
                         .observe(this, Observer { convo ->
                             convo?.let {
                                 Log.i("Conversation", it.ffname)
-                                Snackbar.make(conversation_parent,
-                                    "Your message was successfully delivered!", Snackbar.LENGTH_LONG).show()
+                                Toast.makeText(context, "Your message was successfully delivered!", Toast.LENGTH_LONG).show()
                                 ff_name.setText("")
                                 ff_number.setText("")
                                 survivor_number.setText("")
                             }
                             if (convo == null)
-                                Snackbar.make(conversation_parent,
-                                "Your message could not be delivered", Snackbar.LENGTH_LONG).show()
+                                Toast.makeText(context, "Your message could not be delivered", Toast.LENGTH_LONG).show()
                         })
                 }
             }
