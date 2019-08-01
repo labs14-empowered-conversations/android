@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.lambdaschool.empoweredconversation.App
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.model.Conversation
@@ -21,7 +22,13 @@ import javax.inject.Inject
 
 
 
-class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialogListener {
+class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialogListener,
+LoginFragmentDialog.LoginFragmentDialogListener {
+    override fun onFinishLoginDialog(loggedIn: Boolean) {
+        if (!loggedIn)
+            view?.findNavController()?.navigate(R.id.landingFragment)
+    }
+
     override fun onFinishTosDialog(accepted: Boolean) {
         if (accepted) {
             continue_button.text = "Send message"
@@ -46,6 +53,12 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
         activity?.toolbar_title?.text = "Start a conversation"
 
         App.app.conversationComponent.inject(this)
+
+        fragmentManager?.let { fragmentManager ->
+            val tosFrag = LoginFragmentDialog()
+            tosFrag.setTargetFragment(this, 1)
+            tosFrag.show(fragmentManager, "login_fragment")
+        }
 
         conversationViewModel = ViewModelProviders.of(
             this,
