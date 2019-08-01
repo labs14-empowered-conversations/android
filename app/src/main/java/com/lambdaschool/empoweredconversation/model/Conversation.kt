@@ -1,5 +1,8 @@
 package com.lambdaschool.empoweredconversation.model
 
-data class Conversation(val survivornumber: String,
-                        val ffname: String,
-                        val ffnumber: String)
+data class Conversation(
+    val conversationid: Long,
+    val survivornumber: String,
+    val ffname: String,
+    val ffnumber: String
+)
