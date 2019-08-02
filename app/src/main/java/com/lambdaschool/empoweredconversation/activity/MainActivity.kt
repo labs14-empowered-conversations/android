@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.landingFragment, R.id.conversationFragment),
+            setOf(R.id.landingFragment, R.id.conversationFragment, R.id.aboutFragment),
             drawerLayout
         )
     }
