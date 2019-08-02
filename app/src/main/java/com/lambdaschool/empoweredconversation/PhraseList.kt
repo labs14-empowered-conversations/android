@@ -8,15 +8,20 @@ class PhraseList {
         private var counter = 0
 
         private val phrases: ArrayList<String> =
-            arrayListOf("From which we spring at the edge of forever",
-                "No drama Oxford comma",
-                "Great turbulent clouds finite",
-                "Vastness is bearable only through love",
-                "The sky calls to us",
-                "The interiors of collapsing stars",
-                "Citizens of distant epochs",
-                "Star stuff harvesting star light",
-                "Unbounded tendrils of gossamer clouds")
+            arrayListOf(
+                "Supporting Survivors",
+                "The Power of Words",
+                "Feeling Connected",
+                "Healing Through Relationships",
+                "Being Seen and Heard",
+                "Growing My Skills in Communication",
+                "Listening to Understand",
+                "Showing Up When it Matters",
+                "Deepening My Ability to Connect",
+                "Communicating with Love",
+                "Learning How to Respond Better",
+                "Responding with Empathy"
+            )
 
         fun getNextPhrase(): String {
             if (counter == 9) counter = 0
@@ -24,7 +29,7 @@ class PhraseList {
         }
 
         fun setStartingIndex() {
-            counter = Random.nextInt(0,8)
+            counter = Random.nextInt(0, 8)
         }
     }
 
