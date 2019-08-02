@@ -24,6 +24,7 @@ class LoginFragmentDialog : DialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         try {
             listener = targetFragment as LoginFragmentDialogListener
         } catch (e: ClassCastException) {
