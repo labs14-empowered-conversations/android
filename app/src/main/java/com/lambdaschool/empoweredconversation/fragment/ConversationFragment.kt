@@ -34,6 +34,7 @@ LoginFragmentDialog.LoginFragmentDialogListener {
     override fun onFinishTosDialog(accepted: Boolean) {
         if (accepted) {
             continue_button.text = "Send message"
+            continue_button.isEnabled = true
         }
     }
 
@@ -72,6 +73,7 @@ LoginFragmentDialog.LoginFragmentDialogListener {
         survivor_number.removeError(survivor_number_layout)
 
         continue_button.setOnClickListener {
+            continue_button.isEnabled = false
             survivorNumber = survivor_number.text.toString()
             ffName = ff_name.text.toString()
             ffNumber = ff_number.text.toString()
@@ -93,9 +95,12 @@ LoginFragmentDialog.LoginFragmentDialogListener {
                                 ff_name.setText("")
                                 ff_number.setText("")
                                 survivor_number.setText("")
+                                continue_button.isEnabled = true
                             }
-                            if (convo == null)
+                            if (convo == null){
                                 Toast.makeText(context, "Your message could not be delivered", Toast.LENGTH_LONG).show()
+                                continue_button.isEnabled = true
+                            }
                         })
                 }
             }
