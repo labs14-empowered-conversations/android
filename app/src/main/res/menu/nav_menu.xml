@@ -7,7 +7,7 @@
     <item
         android:id="@+id/conversationFragment"
         android:icon="@drawable/ic_chat_black_24dp"
-        android:title="Use our Tool" />
+        android:title="Use Our Tool" />
     <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_info_black_24dp"
