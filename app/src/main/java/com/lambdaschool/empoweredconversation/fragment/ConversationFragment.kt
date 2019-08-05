@@ -115,24 +115,24 @@ LoginFragmentDialog.LoginFragmentDialogListener {
     private fun validateFields(): Boolean {
         continue_button.isEnabled = true
         if (TextUtils.isEmpty(ffName)) {
-            ff_name_layout.error = "Please Provide a Name"
+            ff_name_layout.error = "Please provide a name"
             return false
         }
         if (TextUtils.isEmpty(ffNumber)) {
-            ff_number_layout.error = "Please Provide a Number"
+            ff_number_layout.error = "Please provide a number"
             return false
         } else {
             if (ffNumber.replace("[-+.^:,]".toRegex(), "").length != 10){
-                ff_number_layout.error = "Please Provide a Valid Number"
+                ff_number_layout.error = "Please provide a valid number"
                 return false
             }
         }
         if (TextUtils.isEmpty(survivorNumber)) {
-            survivor_number_layout.error = "Please Provide a Number"
+            survivor_number_layout.error = "Please provide a number"
             return false
         } else {
             if (survivorNumber.replace("[-+.^:,]".toRegex(), "").length != 10){
-                survivor_number_layout.error = "Please Provide a Valid Number"
+                survivor_number_layout.error = "Please provide a valid number"
                 return false
             }
         }
