@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
             finish()
         }
 
-
         landingViewModel = ViewModelProviders.of(this).get(LandingViewModel::class.java)
 
         val navController = findNavController(R.id.nav_host_fragment)
