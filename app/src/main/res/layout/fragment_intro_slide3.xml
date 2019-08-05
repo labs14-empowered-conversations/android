@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="When it comes to anonymously \nreaching out we have your back."
+            android:text="When it comes to anonymously \nreaching out, we have your back."
             android:textAlignment="center"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/textView9"
