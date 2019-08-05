@@ -59,7 +59,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="Be assured that all \n your interaction remain \n anonymous"
+        android:text="Be assured that all \n your interactions remain \n anonymous"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp"
