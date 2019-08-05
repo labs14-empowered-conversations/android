@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text='"Hi [Name], a friend or loved one is reaching out for \nsupport. Click here to help your friend: [url]\"'
+                android:text='"Hi [Name], a friend or loved one is reaching out for \nsupport. Click here to help them: [url]\"'
                 android:textAlignment="center"
                 android:textColor="@color/black" />
         </LinearLayout>
