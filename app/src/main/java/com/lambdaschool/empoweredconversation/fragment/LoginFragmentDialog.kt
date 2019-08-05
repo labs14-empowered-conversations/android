@@ -37,7 +37,7 @@ class LoginFragmentDialog : DialogFragment() {
                 dismiss()
             }
             else {
-                password_layout.error = "Enter correct password"
+                password_layout.error = "Enter correct key"
             }
         }
     }
