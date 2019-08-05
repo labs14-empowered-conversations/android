@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".fragment.intro.IntroSlide1Fragment"
+                                                   android:background="@color/colorPrimary">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:background="@color/color_intro_slide_background">
+        <ImageView
+                android:src="@drawable/empoweredconversationlogo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal" android:layout_marginBottom="-25dp"/>
+        <TextView
+                android:text="Welcome to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textAlignment="center"
+                android:textSize="28sp" android:textColor="@color/colorDarkTeal"/>
+        <TextView
+                android:text="Empowered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textAlignment="center"
+                android:textSize="34sp" android:textStyle="bold" android:textColor="@color/colorDarkTeal"/>
+        <TextView
+                android:text="Conversation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:textAlignment="center"
+                android:textSize="34sp" android:textStyle="bold" android:textColor="@color/colorDarkTeal"/>
+        <ImageView
+                android:src="@drawable/slide_1_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/imageView7" android:layout_marginTop="75dp"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

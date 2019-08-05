@@ -1,8 +1,9 @@
 package com.lambdaschool.empoweredconversation.activity
 
-import android.content.res.Resources
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -23,11 +24,22 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListener {
     private lateinit var landingViewModel: LandingViewModel
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        prefs = getSharedPreferences("AppIntro", Context.MODE_PRIVATE)
+
+        if (!prefs.getBoolean("AppIntroViewed", false)) {
+            startActivity(
+                Intent(applicationContext, AppIntroActivity::class.java)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
+            finish()
+        }
 
         landingViewModel = ViewModelProviders.of(this).get(LandingViewModel::class.java)
 
@@ -49,7 +61,7 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.landingFragment),
+            setOf(R.id.landingFragment, R.id.conversationFragment, R.id.aboutFragment),
             drawerLayout
         )
     }
@@ -58,7 +70,6 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
         val retValue = super.onCreateOptionsMenu(menu)
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         if (navigationView == null) {
-
             menuInflater.inflate(R.menu.nav_menu, menu)
             return true
         }
@@ -70,9 +81,9 @@ class MainActivity : AppCompatActivity(), AppBarConfiguration.OnNavigateUpListen
             android.R.id.home ->
                 drawer_layout.openDrawer(GravityCompat.START)
         }
-        if (item != null){
+        if (item != null)
             return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
-        }
+
         return super.onOptionsItemSelected(item)
     }
 
