@@ -109,6 +109,7 @@ LoginFragmentDialog.LoginFragmentDialogListener {
     }
 
     private fun validateFields(): Boolean {
+        continue_button.isEnabled = true
         if (TextUtils.isEmpty(ffName)) {
             ff_name_layout.error = "Please Provide a Name"
             return false
