@@ -101,6 +101,9 @@ LoginFragmentDialog.LoginFragmentDialogListener {
                                 Toast.makeText(context, "Your message could not be delivered", Toast.LENGTH_LONG).show()
                                 continue_button.isEnabled = true
                             }
+                            ff_name.clearFocus()
+                            ff_number.clearFocus()
+                            survivor_number.clearFocus()
                         })
                 }
             }

@@ -20,29 +20,29 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Please enter the given password"
-                android:textColor="@color/colorDarkTeal"
-                android:textSize="18sp" />
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Please verify"
+                    android:textColor="@color/colorDarkTeal"
+                    android:textSize="18sp" android:textAlignment="center"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter password"
-                app:boxStrokeColor="@color/colorPrimaryDark"
-                app:hintTextAppearance="@style/GreenTextInputLayout">
+                    android:id="@+id/password_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter app key"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:hintTextAppearance="@style/GreenTextInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="textPassword" />
+                        android:id="@+id/password_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
