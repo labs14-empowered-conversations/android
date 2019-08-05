@@ -104,6 +104,7 @@ LoginFragmentDialog.LoginFragmentDialogListener {
                             ff_name.clearFocus()
                             ff_number.clearFocus()
                             survivor_number.clearFocus()
+                            continue_button.text = "Start"
                         })
                 }
             }
