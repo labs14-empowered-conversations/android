@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/conversation_parent"
+    <LinearLayout
+            android:id="@+id/conversation_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -28,20 +29,22 @@
                 android:src="@drawable/convo_form_image" />
 
             <TextView
+                    android:id="@+id/video_url_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:linksClickable="false"
+                    android:padding="10dp"
+                    android:text="The video that will be sent"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Example of message that will be sent to your \nfriend or family member:"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="URL to Youtube video"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark" />
 
             <TextView
                 android:layout_width="match_parent"

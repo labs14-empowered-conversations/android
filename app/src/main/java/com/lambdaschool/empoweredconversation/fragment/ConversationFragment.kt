@@ -1,5 +1,6 @@
 package com.lambdaschool.empoweredconversation.fragment
 
+import android.graphics.Paint.UNDERLINE_TEXT_FLAG
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -11,10 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.lambdaschool.empoweredconversation.App
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.model.Conversation
+import com.lambdaschool.empoweredconversation.openUrlOnClick
 import com.lambdaschool.empoweredconversation.removeError
 import com.lambdaschool.empoweredconversation.vm.ConversationViewModel
 import com.lambdaschool.empoweredconversation.vm.ConversationViewModelFactory
@@ -22,10 +23,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_conversation.*
 import javax.inject.Inject
 
-
-
 class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialogListener,
-LoginFragmentDialog.LoginFragmentDialogListener {
+    LoginFragmentDialog.LoginFragmentDialogListener {
     override fun onFinishLoginDialog(loggedIn: Boolean) {
         if (!loggedIn)
             view?.findNavController()?.navigate(R.id.landingFragment)
@@ -47,7 +46,11 @@ LoginFragmentDialog.LoginFragmentDialogListener {
 
     private lateinit var conversationViewModel: ConversationViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_conversation, container, false)
     }
 
@@ -56,6 +59,15 @@ LoginFragmentDialog.LoginFragmentDialogListener {
         activity?.toolbar_title?.text = "Start a conversation"
 
         App.app.conversationComponent.inject(this)
+
+        video_url_textview.paintFlags = video_url_textview.paintFlags or UNDERLINE_TEXT_FLAG
+
+        context?.let { context ->
+            video_url_textview.openUrlOnClick(
+                "https://www.youtube.com/watch?v=bBrgb-uLtlE",
+                context
+            )
+        }
 
         fragmentManager?.let { fragmentManager ->
             val tosFrag = LoginFragmentDialog()
@@ -91,14 +103,22 @@ LoginFragmentDialog.LoginFragmentDialogListener {
                         .observe(this, Observer { convo ->
                             convo?.let {
                                 Log.i("Conversation", it.ffname)
-                                Toast.makeText(context, "Your message was successfully delivered!", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    context,
+                                    "Your message was successfully delivered!",
+                                    Toast.LENGTH_LONG
+                                ).show()
                                 ff_name.setText("")
                                 ff_number.setText("")
                                 survivor_number.setText("")
                                 continue_button.isEnabled = true
                             }
-                            if (convo == null){
-                                Toast.makeText(context, "Your message could not be delivered", Toast.LENGTH_LONG).show()
+                            if (convo == null) {
+                                Toast.makeText(
+                                    context,
+                                    "Your message could not be delivered",
+                                    Toast.LENGTH_LONG
+                                ).show()
                                 continue_button.isEnabled = true
                             }
                             ff_name.clearFocus()
@@ -122,7 +142,7 @@ LoginFragmentDialog.LoginFragmentDialogListener {
             ff_number_layout.error = "Please provide a number"
             return false
         } else {
-            if (ffNumber.replace("[-+.^:,]".toRegex(), "").length != 10){
+            if (ffNumber.replace("[-+.^:,]".toRegex(), "").length != 10) {
                 ff_number_layout.error = "Please provide a valid number"
                 return false
             }
@@ -131,7 +151,7 @@ LoginFragmentDialog.LoginFragmentDialogListener {
             survivor_number_layout.error = "Please provide a number"
             return false
         } else {
-            if (survivorNumber.replace("[-+.^:,]".toRegex(), "").length != 10){
+            if (survivorNumber.replace("[-+.^:,]".toRegex(), "").length != 10) {
                 survivor_number_layout.error = "Please provide a valid number"
                 return false
             }
