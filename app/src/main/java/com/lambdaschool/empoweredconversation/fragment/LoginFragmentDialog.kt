@@ -1,24 +1,25 @@
 package com.lambdaschool.empoweredconversation.fragment
 
-import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.removeError
 import kotlinx.android.synthetic.main.fragment_login_fragment_dialog.*
-import androidx.navigation.findNavController
-import com.lambdaschool.empoweredconversation.BuildConfig
-import com.lambdaschool.empoweredconversation.R
 
 
 class LoginFragmentDialog : DialogFragment() {
     private lateinit var listener: LoginFragmentDialogListener
     private var loggedIn = false
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_login_fragment_dialog, container, false)
     }
 
@@ -31,11 +32,10 @@ class LoginFragmentDialog : DialogFragment() {
         }
         password_edit_text.removeError(password_layout)
         enter_password_button.setOnClickListener {
-            if (password_edit_text.text.toString() == "goblue"){
+            if (password_edit_text.text.toString() == "goblue") {
                 loggedIn = true
                 dismiss()
-            }
-            else {
+            } else {
                 password_layout.error = "Enter correct key"
             }
         }

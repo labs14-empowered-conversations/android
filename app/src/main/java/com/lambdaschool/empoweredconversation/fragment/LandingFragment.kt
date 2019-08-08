@@ -9,20 +9,22 @@ import androidx.navigation.findNavController
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.lambdaschool.empoweredconversation.PhraseList
+import com.lambdaschool.empoweredconversation.R
+import com.lambdaschool.empoweredconversation.openUrlOnClick
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_landing.*
 import kotlinx.coroutines.*
-import android.content.Intent
-import android.net.Uri
-import com.lambdaschool.empoweredconversation.R
-import com.lambdaschool.empoweredconversation.openUrlOnClick
 
 
 class LandingFragment : Fragment() {
     private lateinit var carouselJob: Job
     private lateinit var carouselScope: CoroutineScope
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_landing, container, false)
     }
 
@@ -30,13 +32,23 @@ class LandingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.toolbar_title?.text = "Home"
 
-        start_now_button.setOnClickListener{
+        start_now_button.setOnClickListener {
             view.findNavController().navigate(R.id.conversationFragment)
         }
 
-        context?.let { instagram_button.openUrlOnClick("https://www.instagram.com/empoweredconvo/", it) }
+        context?.let {
+            instagram_button.openUrlOnClick(
+                "https://www.instagram.com/empoweredconvo/",
+                it
+            )
+        }
         context?.let { twitter_button.openUrlOnClick("https://twitter.com/empoweredconvo/", it) }
-        context?.let { facebook_button.openUrlOnClick("https://www.facebook.com/empoweredconvo/", it) }
+        context?.let {
+            facebook_button.openUrlOnClick(
+                "https://www.facebook.com/empoweredconvo/",
+                it
+            )
+        }
 
     }
 
