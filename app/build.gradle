@@ -20,6 +20,7 @@ android {
         versionName "3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "authCredential", localProperties['authCredential']
+        buildConfigField "String", "loginPw", localProperties['loginPw']
     }
 
     buildTypes {
