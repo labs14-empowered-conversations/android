@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/landingFragment">
-    <fragment android:id="@+id/landingFragment"
-              android:name="com.lambdaschool.empoweredconversation.fragment.LandingFragment"
-              android:label="."
-              tools:layout="@layout/fragment_landing">
-        <action android:id="@+id/action_landingFragment_to_conversationFragment"
-                app:destination="@id/conversationFragment"/>
-    </fragment>
-    <fragment android:id="@+id/conversationFragment"
-              android:name="com.lambdaschool.empoweredconversation.fragment.ConversationFragment"
-              android:label="."
-              tools:layout="@layout/fragment_conversation">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/landingFragment">
+    <fragment
+            android:id="@+id/landingFragment"
+            android:name="com.lambdaschool.empoweredconversation.fragment.LandingFragment"
+            android:label="."
+            tools:layout="@layout/fragment_landing">
         <action
-            android:id="@+id/action_conversationFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+                android:id="@+id/action_landingFragment_to_conversationFragment"
+                app:destination="@id/conversationFragment" />
     </fragment>
     <fragment
-        android:id="@+id/aboutFragment"
-        android:name="com.lambdaschool.empoweredconversation.fragment.AboutFragment"
-        android:label="."
-        tools:layout="@layout/fragment_about" />
+            android:id="@+id/conversationFragment"
+            android:name="com.lambdaschool.empoweredconversation.fragment.ConversationFragment"
+            android:label="."
+            tools:layout="@layout/fragment_conversation">
+        <action
+                android:id="@+id/action_conversationFragment_to_aboutFragment"
+                app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/aboutFragment"
+            android:name="com.lambdaschool.empoweredconversation.fragment.AboutFragment"
+            android:label="."
+            tools:layout="@layout/fragment_about" />
 </navigation>

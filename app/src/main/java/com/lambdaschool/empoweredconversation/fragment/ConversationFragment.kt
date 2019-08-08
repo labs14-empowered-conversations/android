@@ -25,6 +25,9 @@ import javax.inject.Inject
 
 class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialogListener,
     LoginFragmentDialog.LoginFragmentDialogListener {
+    private val tosFragRequestCode = 0
+    private val loginFragRequestCode = 1
+
     override fun onFinishLoginDialog(loggedIn: Boolean) {
         if (!loggedIn)
             view?.findNavController()?.navigate(R.id.landingFragment)
@@ -70,9 +73,9 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
         }
 
         fragmentManager?.let { fragmentManager ->
-            val tosFrag = LoginFragmentDialog()
-            tosFrag.setTargetFragment(this, 1)
-            tosFrag.show(fragmentManager, "login_fragment")
+            val loginFrag = LoginFragmentDialog()
+            loginFrag.setTargetFragment(this, loginFragRequestCode)
+            loginFrag.show(fragmentManager, "login_fragment")
         }
 
         conversationViewModel = ViewModelProviders.of(
@@ -94,7 +97,7 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
                 if (continue_button.text.toString() == "Start") {
                     fragmentManager?.let { fragmentManager ->
                         val tosFrag = TermsOfServiceFragment()
-                        tosFrag.setTargetFragment(this, 0)
+                        tosFrag.setTargetFragment(this, tosFragRequestCode)
                         tosFrag.show(fragmentManager, "tos_fragment")
                     }
                 } else {

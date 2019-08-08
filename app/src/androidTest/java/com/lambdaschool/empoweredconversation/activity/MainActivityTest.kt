@@ -5,7 +5,6 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import com.lambdaschool.empoweredconversation.R
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,7 +17,7 @@ class MainActivityTest {
 
     @Test
     @Throws(Exception::class)
-    fun clickContinueButton_submitsForm(){
+    fun clickContinueButton_submitsForm() {
         Espresso.onView(ViewMatchers.withId(R.id.drawer_layout))
     }
 }
