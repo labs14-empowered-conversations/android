@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.lambdaschool.empoweredconversation.BuildConfig
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.removeError
 import kotlinx.android.synthetic.main.fragment_login_fragment_dialog.*
@@ -32,7 +33,7 @@ class LoginFragmentDialog : DialogFragment() {
         }
         password_edit_text.removeError(password_layout)
         enter_password_button.setOnClickListener {
-            if (password_edit_text.text.toString() == "goblue") {
+            if (password_edit_text.text.toString() == BuildConfig.loginPw) {
                 loggedIn = true
                 dismiss()
             } else {
