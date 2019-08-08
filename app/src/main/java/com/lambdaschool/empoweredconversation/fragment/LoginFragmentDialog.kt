@@ -31,7 +31,7 @@ class LoginFragmentDialog : DialogFragment() {
         }
         password_edit_text.removeError(password_layout)
         enter_password_button.setOnClickListener {
-            if (password_edit_text.text.toString() == BuildConfig.loginPw){
+            if (password_edit_text.text.toString() == "goblue"){
                 loggedIn = true
                 dismiss()
             }
