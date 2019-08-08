@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.textfield.TextInputEditText
@@ -28,7 +29,7 @@ fun TextInputEditText.removeError(layout: TextInputLayout) {
     })
 }
 
-fun ImageButton.openUrlOnClick(url: String, context: Context) {
+fun View.openUrlOnClick(url: String, context: Context) {
     this.setOnClickListener {
         val uri = Uri.parse(url)
         val intent = Intent(Intent.ACTION_VIEW, uri)
