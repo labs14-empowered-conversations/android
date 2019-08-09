@@ -1,37 +1,18 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 # Empowered Conversation
 
 You can find the deployed project on the [Google play store](https://play.google.com/store/apps/details?id=com.lambdaschool.empoweredconversation).
 
-## 4️⃣ Contributors
+## Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add or delete these place-holders as needed
+|                                       [Josh Halvorson](https://github.com/JoshHalvorson)                                        |                                       [Vivek Vishwanath](https://github.com/VivekV95)                                        
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | 
+|                      [<img src="https://i.imgur.com/gPlXwNk.jpg?1" width = "200"/>](https://github.com/JoshHalvorson)                       |                      [<img src="https://avatars2.githubusercontent.com/u/39810816?s=460&v=4" width = "200" />](https://github.com/VivekV95)                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/JoshHalvorson)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/VivekV95)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/joshhalvorson/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/vivekv210/) 
 
-|                                       [Josh Halvorson](https://github.com/JoshHalvorson)                                        |                                       [Vivek Vishwanath](https://github.com/VivekV95)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://i.imgur.com/gPlXwNk.jpg?1" width = "200"/>](https://github.com/JoshHalvorson)                       |                      [<img src="https://avatars2.githubusercontent.com/u/39810816?s=460&v=4" width = "200" />](https://github.com/VivekV95)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/JoshHalvorson)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/VivekV95)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/joshhalvorson/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/vivekv210/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+[![Build Status](https://travis-ci.org/labs14-empowered-conversations/android.svg?branch=master)](https://travis-ci.org/labs14-empowered-conversations/android)
 
-🚫 Optional examples of using badges with links for your tech stack, make sure to change these to fit your project
-
-[![Swift Version][swift-image]][swift-url]
-[![Build Status][travis-image]][travis-url]
-[![License][license-image]][license-url]
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg)](https://img.shields.io/cocoapods/v/LFAlertController.svg)  
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
-
-## 🚫 Project Overview
-
+## Project Overview
 
 [Trello Board](https://trello.com/b/lpR8AkOq/labs-14-empowered-conversations)
 
@@ -41,45 +22,15 @@ You can find the deployed project on the [Google play store](https://play.google
 
 Empowered Conversation aims to create a neutral ground for a survivor to start a conversation about a sexual assault with a family member/friend. It is a survivor-activated tool that educates and prepares the person they will disclose to before the conversation takes place.
 
-## 2️⃣ Features
+## Features
 
--    Feature 1
--    Feature 2
--    Feature 3
--    Feature 4
--    Feature 5
+-    Our service sends an anonymous text to the users friend/family
 
-## 2️⃣Authentication API here
+## Requirements
 
-🚫Replace text below with a description of the API
-
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
-
-## 3️⃣Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-## 2️⃣Requirements
-
-🚫 These are examples, make sure this matches your project's requirements
-
--   Minimum version of Android here
--   Android Studio
--   Gradle
+-   Minimum API level is 21 (Theoretically lower, there are no api level depdent features)
+-   Android Studio 3.4
+-   Gradle 5.4.1
 
 ## Contributing
 
@@ -127,14 +78,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](_link to your backend readme here_) for details on the backend of our project.
-
-
-[swift-image]: https://img.shields.io/badge/swift-3.0-orange.svg
-[swift-url]: https://swift.org/
-[license-image]: https://img.shields.io/badge/License-MIT-blue.svg
-[license-url]: LICENSE
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[codebeat-image]: https://codebeat.co/badges/c19b47ea-2f9d-45df-8458-b2d952fe9dad
-[codebeat-url]: https://codebeat.co/projects/github-com-vsouza-awesomeios-com
+See [Backend Documentation](https://empoweredconversation.herokuapp.com/swagger-ui.html#/) for details on the backend of our project.

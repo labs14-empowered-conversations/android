@@ -5,7 +5,7 @@ import com.lambdaschool.empoweredconversation.di.AppModule
 import com.lambdaschool.empoweredconversation.di.ConversationComponent
 import com.lambdaschool.empoweredconversation.di.DaggerConversationComponent
 
-class App: Application() {
+class App : Application() {
     lateinit var conversationComponent: ConversationComponent
 
     companion object {

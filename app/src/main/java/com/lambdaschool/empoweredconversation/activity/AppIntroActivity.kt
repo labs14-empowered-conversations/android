@@ -2,7 +2,6 @@ package com.lambdaschool.empoweredconversation.activity
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import com.github.paolorotolo.appintro.AppIntro
 import com.lambdaschool.empoweredconversation.R
@@ -19,8 +18,12 @@ class AppIntroActivity : AppIntro() {
     }
 
     override fun onDonePressed() {
-        startActivity(Intent(applicationContext,
-            MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        startActivity(
+            Intent(
+                applicationContext,
+                MainActivity::class.java
+            ).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        )
         getSharedPreferences("AppIntro", Context.MODE_PRIVATE)
             .edit()
             .putBoolean("AppIntroViewed", true)
@@ -46,7 +49,10 @@ class AppIntroActivity : AppIntro() {
         setNextArrowColor(resources.getColor(R.color.colorDarkTeal))
         doneButton.setBackgroundColor(resources.getColor(R.color.color_intro_slide_background_bar))
         setColorDoneText(resources.getColor(R.color.colorDarkTeal))
-        setIndicatorColor(resources.getColor(R.color.colorDarkTeal), resources.getColor(R.color.colorDarkGrey))
+        setIndicatorColor(
+            resources.getColor(R.color.colorDarkTeal),
+            resources.getColor(R.color.colorDarkGrey)
+        )
     }
 
 }

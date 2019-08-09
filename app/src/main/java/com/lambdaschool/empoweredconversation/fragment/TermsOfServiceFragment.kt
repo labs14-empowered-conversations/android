@@ -11,7 +11,11 @@ import kotlinx.android.synthetic.main.fragment_terms_of.*
 class TermsOfServiceFragment : DialogFragment() {
     private lateinit var listener: TosFragmentDialogListener
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_terms_of, container, false)
     }
 
