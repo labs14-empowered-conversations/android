@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:linksClickable="false"
                     android:padding="10dp"
-                    android:text="The video that will be sent"
+                    android:text="Watch the video that will be sent"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark" />
 
