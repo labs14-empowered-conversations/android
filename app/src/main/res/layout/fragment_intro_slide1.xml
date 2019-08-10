@@ -20,7 +20,7 @@
                 android:layout_marginBottom="-25dp" />
 
         <TextView
-                android:text="Welcome to"
+                android:text="@string/intro_slide_1_header_top_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -28,7 +28,7 @@
                 android:textColor="@color/colorDarkTeal" />
 
         <TextView
-                android:text="Empowered"
+                android:text="@string/intro_slide_1_header_middle_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -37,7 +37,7 @@
                 android:textColor="@color/colorDarkTeal" />
 
         <TextView
-                android:text="Conversation"
+                android:text="@string/intro_slide_1_header_bottom_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"

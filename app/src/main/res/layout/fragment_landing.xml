@@ -118,7 +118,7 @@
                 android:layout_marginEnd="8dp"
                 android:height="20dp"
                 android:background="@drawable/round_button_with_gradient"
-                android:text="Start Now"
+                android:text="@string/landing_page_start_button_text"
                 android:textColor="@android:color/white"
                 app:backgroundTint="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -207,7 +207,7 @@
                         android:id="@+id/textView5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="I believe in... "
+                        android:text="@string/landing_page_phrase_carousel_text_start"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -215,7 +215,6 @@
                         android:id="@+id/phrase_textview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="TextView"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="15sp"
