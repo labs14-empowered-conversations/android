@@ -12,11 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import com.lambdaschool.empoweredconversation.App
-import com.lambdaschool.empoweredconversation.R
+import com.lambdaschool.empoweredconversation.*
 import com.lambdaschool.empoweredconversation.model.Conversation
-import com.lambdaschool.empoweredconversation.openUrlOnClick
-import com.lambdaschool.empoweredconversation.removeError
 import com.lambdaschool.empoweredconversation.vm.ConversationViewModel
 import com.lambdaschool.empoweredconversation.vm.ConversationViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,10 +24,14 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
     LoginFragmentDialog.LoginFragmentDialogListener {
     private val tosFragRequestCode = 0
     private val loginFragRequestCode = 1
+    private var appKey = ""
+    private lateinit var school: String
 
-    override fun onFinishLoginDialog(loggedIn: Boolean) {
+    override fun onFinishLoginDialog(loggedIn: Boolean, key: String) {
         if (!loggedIn)
             view?.findNavController()?.navigate(R.id.landingFragment)
+        else
+            appKey = key
     }
 
     override fun onFinishTosDialog(accepted: Boolean) {
@@ -101,8 +102,14 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
                         tosFrag.show(fragmentManager, "tos_fragment")
                     }
                 } else {
+                    val keys = BuildConfig.loginPw.split(", ")
+                    when(appKey){
+                        keys[0] -> school = "michigan"
+                        keys[1] -> school = "northwestern"
+                    }
+
                     conversationViewModel
-                        .postConversation(Conversation(0, survivorNumber, ffName, ffNumber))
+                        .postConversation(Conversation(0, survivorNumber, ffName, ffNumber, school))
                         .observe(this, Observer { convo ->
                             convo?.let {
                                 Log.i("Conversation", it.ffname)
