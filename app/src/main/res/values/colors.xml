@@ -9,4 +9,5 @@
     <color name="black">#000</color>
     <color name="color_intro_slide_background">#418FEDC2</color>
     <color name="color_intro_slide_background_bar">#008FEDC2</color>
+    <color name="transparent">#008FEDC2</color>
 </resources>

@@ -41,9 +41,6 @@ class AppIntroActivity : AppIntro() {
         setSeparatorColor(resources.getColor(R.color.color_intro_slide_background_bar))
         showSkipButton(false)
 
-        //setFadeAnimation()
-        //setZoomAnimation()
-        //setFlowAnimation()
         setDepthAnimation()
 
         setNextArrowColor(resources.getColor(R.color.colorDarkTeal))

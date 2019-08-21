@@ -17,5 +17,4 @@ class IntroSlide1Fragment : Fragment() {
         return inflater.inflate(R.layout.fragment_intro_slide1, container, false)
     }
 
-
 }

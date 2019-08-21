@@ -35,6 +35,7 @@
     <string name="conversation_fragment_form_ff_name_edit_text_hint">Type name here</string>
     <string name="conversation_fragment_form_ff_phone_text">Their Phone #</string>
     <string name="conversation_fragment_form_survivor_phone_text">Your Phone #</string>
+    <!--<string name=":face_with_cowboy_hat:">JoshHalvorson</string>-->
     <string name="conversation_fragment_form_number_edit_text_hint">###-###-####</string>
     <string name="conversation_fragment_form_button_text">Start</string>
 </resources>

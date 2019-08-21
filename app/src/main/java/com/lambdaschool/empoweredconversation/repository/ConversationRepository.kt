@@ -15,7 +15,6 @@ class ConversationRepository(application: Application) {
     private var conversationLiveData = MutableLiveData<Conversation>()
     private var conversationService: ConversationService? = RetrofitInstance.getService()
 
-
     fun postConversation(conversation: Conversation): MutableLiveData<Conversation> {
         val call = conversationService?.postConversation(conversation)
         call?.enqueue(object : Callback<Conversation> {

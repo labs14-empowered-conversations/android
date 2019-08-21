@@ -1,7 +1,6 @@
 package com.lambdaschool.empoweredconversation.fragment
 
 import android.content.DialogInterface
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,6 @@ import com.lambdaschool.empoweredconversation.BuildConfig
 import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.removeError
 import kotlinx.android.synthetic.main.fragment_login_fragment_dialog.*
-
 
 class LoginFragmentDialog : DialogFragment() {
     private lateinit var listener: LoginFragmentDialogListener

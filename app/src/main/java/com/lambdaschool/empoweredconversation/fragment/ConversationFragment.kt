@@ -103,7 +103,7 @@ class ConversationFragment : Fragment(), TermsOfServiceFragment.TosFragmentDialo
                     }
                 } else {
                     val keys = BuildConfig.loginPw.split(", ")
-                    when(appKey){
+                    when (appKey) {
                         keys[0] -> school = "michigan"
                         keys[1] -> school = "northwestern"
                     }
