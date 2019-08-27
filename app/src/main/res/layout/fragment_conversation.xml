@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:linksClickable="false"
                     android:padding="10dp"
-                    android:text="The video that will be sent"
+                    android:text="@string/conversation_fragment_video_link_text"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="Example of message that will be sent to your \nfriend or family member:"
+                    android:text="@string/conversation_fragment_text_before_example_message"
                     android:textAlignment="center"
                     android:textColor="@color/black" />
 
@@ -69,7 +69,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Hi [name], a friend or loved one is reaching out for support. Click here to help them: https://staging.empoweredconvo.com/ff/learn/"
+                        android:text="@string/conversation_fragment_example_message_text"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp"
@@ -111,7 +111,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Name of Friend"
+                            android:text="@string/conversation_fragment_form_ff_name_text"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -120,10 +120,10 @@
                             android:id="@+id/ff_name_layout"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_weight="1"
                             android:ems="10"
-                            android:hint="Type name here"
+                            android:hint="@string/conversation_fragment_form_ff_name_edit_text_hint"
                             app:boxStrokeColor="@color/colorPrimaryDark"
                             app:hintTextAppearance="@style/GreenTextInputLayout">
 
@@ -140,7 +140,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Their Phone #"
+                        android:text="@string/conversation_fragment_form_ff_phone_text"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -152,7 +152,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Your Phone #"
+                        android:text="@string/conversation_fragment_form_survivor_phone_text"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -166,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:ems="10"
-                        android:hint="###-###-####"
+                        android:hint="@string/conversation_fragment_form_number_edit_text_hint"
                         app:boxStrokeColor="@color/colorPrimaryDark"
                         app:hintTextAppearance="@style/GreenTextInputLayout"
                         app:layout_constraintEnd_toStartOf="@id/guideline4"
@@ -188,7 +188,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:ems="10"
-                        android:hint="###-###-####"
+                        android:hint="@string/conversation_fragment_form_number_edit_text_hint"
                         app:boxStrokeColor="@color/colorPrimaryDark"
                         app:hintTextAppearance="@style/GreenTextInputLayout"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -210,8 +210,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/colorPrimaryDark"
-                        android:text="Start"
-                        android:textSize="14dp"
+                        android:text="@string/conversation_fragment_form_button_text"
+                        android:textSize="14sp"
                         app:cornerRadius="4dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ff_number_layout" />

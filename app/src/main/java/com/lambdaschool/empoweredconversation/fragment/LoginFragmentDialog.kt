@@ -11,10 +11,10 @@ import com.lambdaschool.empoweredconversation.R
 import com.lambdaschool.empoweredconversation.removeError
 import kotlinx.android.synthetic.main.fragment_login_fragment_dialog.*
 
-
 class LoginFragmentDialog : DialogFragment() {
     private lateinit var listener: LoginFragmentDialogListener
     private var loggedIn = false
+    private var key = "not_logged_in"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,6 +25,7 @@ class LoginFragmentDialog : DialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val keys = BuildConfig.loginPw.split(", ")
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         try {
             listener = targetFragment as LoginFragmentDialogListener
@@ -33,8 +34,9 @@ class LoginFragmentDialog : DialogFragment() {
         }
         password_edit_text.removeError(password_layout)
         enter_password_button.setOnClickListener {
-            if (password_edit_text.text.toString() == BuildConfig.loginPw) {
+            if (keys.contains(password_edit_text.text.toString())) {
                 loggedIn = true
+                key = password_edit_text.text.toString()
                 dismiss()
             } else {
                 password_layout.error = "Enter correct key"
@@ -43,11 +45,11 @@ class LoginFragmentDialog : DialogFragment() {
     }
 
     override fun onDismiss(dialog: DialogInterface) {
-        listener.onFinishLoginDialog(loggedIn)
+        listener.onFinishLoginDialog(loggedIn, key)
         super.onDismiss(dialog)
     }
 
     interface LoginFragmentDialogListener {
-        fun onFinishLoginDialog(loggedIn: Boolean)
+        fun onFinishLoginDialog(loggedIn: Boolean, key: String)
     }
 }

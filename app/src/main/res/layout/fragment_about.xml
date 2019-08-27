@@ -28,7 +28,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:text="What is Empowered \nConversation?"
+                    android:text="@string/about_fragment_section_1_header_text"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="A survivor-activated tool \nthat educates and \nprepares the person they \nwill disclose to before the \nconversation takes place."
+                    android:text="@string/about_fragment_section_1_body_text"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30dp"
-                    android:text="How does Empowered \nConversation work?"
+                    android:text="@string/about_fragment_section_2_header_text"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:text="When a survivor is ready \nto disclose about their \nassault, they go onto our \nwebsite and input the cell \nphone number and name \nof the person they will \ndisclose to."
+                    android:text="@string/about_fragment_section_2_body_text"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:text="What do we deliver?"
+                    android:text="@string/about_fragment_section_3_header_text"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="The loved one receives \na text message from our \nsite. Within the text, there \nwill be a video that must \nbe watched in order to \nproceed forward. Once the \nvideo is completed, a text \nis generated back to the \nsurvivor, letting them know \nthe person they want to \n disclose to is ready to \nlisten."
+                    android:text="@string/about_fragment_section_3_body_text"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
@@ -178,9 +178,9 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:padding="20dp"
                 app:layout_constraintTop_toBottomOf="@id/constraintLayout3">
 
             <ImageButton
@@ -207,21 +207,5 @@
                     android:src="@drawable/ic_facebook_icon" />
 
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </ScrollView>
-
-        <!--<ImageButton
-                    android:id="@+id/instagram_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/colorPrimary"
-                    android:src="@drawable/ic_instagram_icon"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/twitter_button"
-                    app:layout_constraintTop_toTopOf="@+id/guideline5" />-->

@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_landing.*
 import kotlinx.coroutines.*
 
-
 class LandingFragment : Fragment() {
     private lateinit var carouselJob: Job
     private lateinit var carouselScope: CoroutineScope

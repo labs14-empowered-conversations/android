@@ -22,7 +22,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Empowered Conversation"
+            android:text="@string/header_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
